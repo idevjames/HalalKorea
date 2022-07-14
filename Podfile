@@ -6,6 +6,10 @@ target 'HalalKorea' do
   use_frameworks!
 
   # Pods for HalalKorea
+  pod 'RxSwift', '~> 6.2'
+  pod 'RxCocoa', '~> 6.2'
+  pod 'Alamofire'
+  pod 'Kingfisher'
 
   target 'HalalKoreaTests' do
     inherit! :search_paths
