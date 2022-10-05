@@ -10,6 +10,13 @@ target 'HalalKorea' do
   pod 'RxCocoa', '~> 6.2'
   pod 'Alamofire'
   pod 'Kingfisher'
+  pod 'FSPagerView'
+  pod 'SnapKit'
+  pod 'Then'
+  pod 'SwiftGen', '~> 6.0'
+  
+  # Parse
+  pod 'Parse'
 
   target 'HalalKoreaTests' do
     inherit! :search_paths

@@ -1,34 +1,60 @@
 PODS:
   - Alamofire (5.5.0)
+  - Bolts/Tasks (1.9.1)
+  - FSPagerView (0.8.3)
   - Kingfisher (7.3.0)
+  - Parse (1.19.3):
+    - Parse/Core (= 1.19.3)
+  - Parse/Core (1.19.3):
+    - Bolts/Tasks (= 1.9.1)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
+  - SnapKit (5.6.0)
+  - SwiftGen (6.6.2)
+  - Then (3.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - FSPagerView
   - Kingfisher
+  - Parse
   - RxCocoa (~> 6.2)
   - RxSwift (~> 6.2)
+  - SnapKit
+  - SwiftGen (~> 6.0)
+  - Then
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - Bolts
+    - FSPagerView
     - Kingfisher
+    - Parse
     - RxCocoa
     - RxRelay
     - RxSwift
+    - SnapKit
+    - SwiftGen
+    - Then
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   Kingfisher: cdb1189a9223b1bc028816bd47c8b8101a58831c
+  Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
+  Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: a99ef6601182424c4fdef5e531277acf4b5da662
+PODFILE CHECKSUM: 88128ef86ef171d0d9df0fdbbda0accd17dd206e
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3
