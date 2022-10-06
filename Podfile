@@ -8,6 +8,8 @@ target 'HalalKorea' do
   # Pods for HalalKorea
   pod 'RxSwift', '~> 6.2'
   pod 'RxCocoa', '~> 6.2'
+  pod 'RxGesture'
+  pod 'RxViewController'
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'FSPagerView'

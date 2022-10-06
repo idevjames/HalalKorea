@@ -29,7 +29,6 @@ class KHalalCoordinator: Coordinator {
     func startPush() -> UINavigationController {
         let viewModel = KHalalViewModel()
         khalalViewController = KHalalViewController(viewModel: viewModel, coordinator: self)
-        
         navigationController.setViewControllers([khalalViewController], animated: false)
         
         return navigationController

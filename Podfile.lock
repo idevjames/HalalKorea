@@ -10,9 +10,15 @@ PODS:
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
+  - RxGesture (4.0.4):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
+  - RxViewController (2.0.0):
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
   - SnapKit (5.6.0)
   - SwiftGen (6.6.2)
   - Then (3.0.0)
@@ -23,7 +29,9 @@ DEPENDENCIES:
   - Kingfisher
   - Parse
   - RxCocoa (~> 6.2)
+  - RxGesture
   - RxSwift (~> 6.2)
+  - RxViewController
   - SnapKit
   - SwiftGen (~> 6.0)
   - Then
@@ -36,8 +44,10 @@ SPEC REPOS:
     - Kingfisher
     - Parse
     - RxCocoa
+    - RxGesture
     - RxRelay
     - RxSwift
+    - RxViewController
     - SnapKit
     - SwiftGen
     - Then
@@ -49,12 +59,14 @@ SPEC CHECKSUMS:
   Kingfisher: cdb1189a9223b1bc028816bd47c8b8101a58831c
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
+  RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxViewController: 56486fa0afd629a1d6b5ba077f3b8cd9dc31b5d2
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 88128ef86ef171d0d9df0fdbbda0accd17dd206e
+PODFILE CHECKSUM: 80316960446a852c4527623a5ce23edd4bf5ac0c
 
 COCOAPODS: 1.11.3

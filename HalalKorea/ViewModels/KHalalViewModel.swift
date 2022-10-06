@@ -6,7 +6,7 @@
 //
 
 
-class KHalalViewModel: BaseViewModel {
+class KHalalViewModel {
     struct Input {
         
     }

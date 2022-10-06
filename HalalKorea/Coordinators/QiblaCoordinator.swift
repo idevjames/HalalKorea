@@ -29,7 +29,6 @@ class QiblaCoordinator: Coordinator {
     func startPush() -> UINavigationController {
         let viewModel = QiblaViewModel()
         qiblaViewController = QiblaViewController(viewModel: viewModel, coordinator: self)
-        
         navigationController.setViewControllers([qiblaViewController], animated: false)
         
         return navigationController

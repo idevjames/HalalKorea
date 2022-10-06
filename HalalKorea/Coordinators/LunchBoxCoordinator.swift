@@ -29,7 +29,6 @@ class LunchBoxCoordinator: Coordinator {
     func startPush() -> UINavigationController {
         let viewModel = LunchBoxViewModel()
         lunchBoxViewController = LunchBoxViewController(viewModel: viewModel, coordinator: self)
-        
         navigationController.setViewControllers([lunchBoxViewController], animated: false)
         
         return navigationController

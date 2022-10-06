@@ -20,10 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = UIWindow(windowScene: windowScene)
         self.appCoordinator = AppCoordinator(window)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
-            self?.appCoordinator?.start()
-        }
+        self.appCoordinator?.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

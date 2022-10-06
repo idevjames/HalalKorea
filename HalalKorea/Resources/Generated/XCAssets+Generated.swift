@@ -35,6 +35,7 @@ internal enum Asset {
     }
   }
   internal enum Colors {
+    internal static let primaryGray = ColorAsset(name: "primary_gray")
     internal static let primaryGreen = ColorAsset(name: "primary_green")
   }
   internal enum Images {
@@ -58,9 +59,9 @@ internal enum Asset {
       internal static let splashHalalLogo = ImageAsset(name: "splash_halal_logo")
     }
     internal enum Icon {
+      internal static let iconAccommodation = ImageAsset(name: "icon_accommodation")
       internal static let iconCompass = ImageAsset(name: "icon_compass")
       internal static let iconGreenCircle = ImageAsset(name: "icon_green_circle")
-      internal static let iconHome = ImageAsset(name: "icon_home")
       internal static let iconLunchBox = ImageAsset(name: "icon_lunch_box")
       internal static let iconMetaverse = ImageAsset(name: "icon_metaverse")
       internal static let iconMice = ImageAsset(name: "icon_mice")

@@ -7,18 +7,32 @@
 
 import UIKit
 
-class KHalalViewController: BaseViewController<KHalalViewModel, KHalalCoordinator> {
+import RxSwift
+import RxCocoa
+import RxGesture
+import RxViewController
+
+class KHalalViewController: UIViewController {
+    // MARK: - Variables
+    private let viewModel: KHalalViewModel
+    private let coordinator: KHalalCoordinator
+    private let disposeBag = DisposeBag()
+    
+    // MARK: - Initialize
+    init(viewModel: KHalalViewModel, coordinator: KHalalCoordinator) {
+        self.viewModel = viewModel
+        self.coordinator = coordinator
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-    }
-    
-    override func setupUI() {
-        
-    }
-    
-    override func bindViewModel() {
     }
 }
