@@ -19,7 +19,6 @@ protocol HomeViewControllerDelegate {
 class HomeViewController: UIViewController {
     // MARK: - Variables
     private let viewModel: HomeViewModel
-    private let coordinator: HomeCoordinator
     private let disposeBag = DisposeBag()
     private let stackViewSpacing: CGFloat = 20.0
     private let stackViewOffset: CGFloat = 40.0
@@ -66,9 +65,8 @@ class HomeViewController: UIViewController {
     private lazy var accommodationButton = ImageButton(frame: .zero, type: .accommodation)
     
     // MARK: - Initialize
-    init(viewModel: HomeViewModel, coordinator: HomeCoordinator) {
+    init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         
         super.init(nibName: nil, bundle: nil)
     }

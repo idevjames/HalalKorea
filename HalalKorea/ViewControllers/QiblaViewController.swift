@@ -15,13 +15,11 @@ import RxViewController
 class QiblaViewController: UIViewController {
     // MARK: - Variables
     private let viewModel: QiblaViewModel
-    private let coordinator: QiblaCoordinator
     private let disposeBag = DisposeBag()
     
     // MARK: - Initialize
-    init(viewModel: QiblaViewModel, coordinator: QiblaCoordinator) {
+    init(viewModel: QiblaViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         
         super.init(nibName: nil, bundle: nil)
     }

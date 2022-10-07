@@ -27,12 +27,7 @@
 		1A6CFF34287FF3A500AC8F39 /* HalalKoreaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CFF33287FF3A500AC8F39 /* HalalKoreaUITestsLaunchTests.swift */; };
 		1A6CFF52288006AC00AC8F39 /* ParseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CFF51288006AC00AC8F39 /* ParseService.swift */; };
 		1A6CFF5528800B3E00AC8F39 /* ParseConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CFF5428800B3E00AC8F39 /* ParseConst.swift */; };
-		1AE2D4C928E2E5C3002A7F32 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4C828E2E5C3002A7F32 /* AppCoordinator.swift */; };
 		1AE2D4CB28E2E876002A7F32 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AE2D4CA28E2E876002A7F32 /* Launch Screen.storyboard */; };
-		1AE2D4D328E2ED4A002A7F32 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4D228E2ED4A002A7F32 /* HomeCoordinator.swift */; };
-		1AE2D4D528E2ED55002A7F32 /* KHalalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4D428E2ED55002A7F32 /* KHalalCoordinator.swift */; };
-		1AE2D4D728E2ED5D002A7F32 /* QiblaCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4D628E2ED5D002A7F32 /* QiblaCoordinator.swift */; };
-		1AE2D4D928E2ED74002A7F32 /* LunchBoxCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4D828E2ED74002A7F32 /* LunchBoxCoordinator.swift */; };
 		1AE2D4E328E312D3002A7F32 /* KHalalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4E228E312D3002A7F32 /* KHalalViewModel.swift */; };
 		1AE2D4E528E312D9002A7F32 /* QiblaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4E428E312D9002A7F32 /* QiblaViewModel.swift */; };
 		1AE2D4E728E312E1002A7F32 /* LunchBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4E628E312E1002A7F32 /* LunchBoxViewModel.swift */; };
@@ -89,12 +84,7 @@
 		1A6CFF33287FF3A500AC8F39 /* HalalKoreaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalalKoreaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1A6CFF51288006AC00AC8F39 /* ParseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseService.swift; sourceTree = "<group>"; };
 		1A6CFF5428800B3E00AC8F39 /* ParseConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConst.swift; sourceTree = "<group>"; };
-		1AE2D4C828E2E5C3002A7F32 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1AE2D4CA28E2E876002A7F32 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		1AE2D4D228E2ED4A002A7F32 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
-		1AE2D4D428E2ED55002A7F32 /* KHalalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHalalCoordinator.swift; sourceTree = "<group>"; };
-		1AE2D4D628E2ED5D002A7F32 /* QiblaCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaCoordinator.swift; sourceTree = "<group>"; };
-		1AE2D4D828E2ED74002A7F32 /* LunchBoxCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchBoxCoordinator.swift; sourceTree = "<group>"; };
 		1AE2D4E228E312D3002A7F32 /* KHalalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHalalViewModel.swift; sourceTree = "<group>"; };
 		1AE2D4E428E312D9002A7F32 /* QiblaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaViewModel.swift; sourceTree = "<group>"; };
 		1AE2D4E628E312E1002A7F32 /* LunchBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchBoxViewModel.swift; sourceTree = "<group>"; };
@@ -194,18 +184,13 @@
 			isa = PBXGroup;
 			children = (
 				1A6CFF42287FF82500AC8F39 /* Apps */,
-				1AE2D4C728E2E5B5002A7F32 /* Coordinator */,
 				1A6CFF48287FF85500AC8F39 /* Resources */,
-				1AFBD5B6289D2CD100708661 /* Bases */,
 				1A6CFF46287FF84300AC8F39 /* VIewControllers */,
 				1A6CFF47287FF84800AC8F39 /* ViewModels */,
 				1A5DE39D28EDD62B0071A354 /* Custom Views */,
-				1A6CFF45287FF83900AC8F39 /* Models */,
 				1A5DC7222882D9AA009CDEFD /* DTO */,
-				1A6CFF44287FF83200AC8F39 /* Repositories */,
 				1A6CFF43287FF82A00AC8F39 /* Services */,
 				1A6CFF4A287FF85E00AC8F39 /* Extensions */,
-				1A6CFF49287FF85A00AC8F39 /* Utils */,
 			);
 			path = HalalKorea;
 			sourceTree = "<group>";
@@ -245,20 +230,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		1A6CFF44287FF83200AC8F39 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
-		1A6CFF45287FF83900AC8F39 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		1A6CFF46287FF84300AC8F39 /* VIewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,13 +265,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		1A6CFF49287FF85A00AC8F39 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		1A6CFF4A287FF85E00AC8F39 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,26 +283,6 @@
 				1A6CFF51288006AC00AC8F39 /* ParseService.swift */,
 			);
 			path = Parse;
-			sourceTree = "<group>";
-		};
-		1AE2D4C728E2E5B5002A7F32 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				1AE2D4C828E2E5C3002A7F32 /* AppCoordinator.swift */,
-				1AE2D4D228E2ED4A002A7F32 /* HomeCoordinator.swift */,
-				1AE2D4D428E2ED55002A7F32 /* KHalalCoordinator.swift */,
-				1AE2D4D628E2ED5D002A7F32 /* QiblaCoordinator.swift */,
-				1AE2D4D828E2ED74002A7F32 /* LunchBoxCoordinator.swift */,
-			);
-			name = Coordinator;
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		1AFBD5B6289D2CD100708661 /* Bases */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Bases;
 			sourceTree = "<group>";
 		};
 		35023DC5BD175925F96775A3 /* Pods */ = {
@@ -625,8 +569,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AFBD5A9289D212800708661 /* KHalalViewController.swift in Sources */,
-				1AE2D4D928E2ED74002A7F32 /* LunchBoxCoordinator.swift in Sources */,
-				1AE2D4C928E2E5C3002A7F32 /* AppCoordinator.swift in Sources */,
 				1A66FF9F28EF11AD006506CD /* CustomNavigationView.swift in Sources */,
 				1A6CFF15287FF3A500AC8F39 /* HomeViewController.swift in Sources */,
 				1AFBD5C4289D8BDF00708661 /* HomeViewModel.swift in Sources */,
@@ -642,14 +584,11 @@
 				1A6CFF52288006AC00AC8F39 /* ParseService.swift in Sources */,
 				1A5DC7212882AEA8009CDEFD /* PFObject+Extension.swift in Sources */,
 				1A5DE39C28EACCE50071A354 /* XCAssets+Generated.swift in Sources */,
-				1AE2D4D728E2ED5D002A7F32 /* QiblaCoordinator.swift in Sources */,
 				1AFBD5B8289D2F4100708661 /* UIColor+Extention.swift in Sources */,
-				1AE2D4D528E2ED55002A7F32 /* KHalalCoordinator.swift in Sources */,
 				1AFBD5AD289D215600708661 /* LunchBoxViewController.swift in Sources */,
 				1A6CFF13287FF3A500AC8F39 /* SceneDelegate.swift in Sources */,
 				1A5DC7242882E800009CDEFD /* CompanyIntroduceDTO.swift in Sources */,
 				1AE2D4E528E312D9002A7F32 /* QiblaViewModel.swift in Sources */,
-				1AE2D4D328E2ED4A002A7F32 /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

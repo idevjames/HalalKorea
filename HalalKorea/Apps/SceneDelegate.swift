@@ -10,7 +10,6 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var appCoordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -19,8 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         self.window = UIWindow(windowScene: windowScene)
-        self.appCoordinator = AppCoordinator(window)
-        self.appCoordinator?.start()
+        self.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -51,6 +49,37 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
     }
 
-
+    // MARK: - Routing
+    private func start() {
+        let homeViewModel = HomeViewModel()
+        let homeViewController = HomeViewController(viewModel: homeViewModel)
+        let homeNavigation = UINavigationController()
+        homeNavigation.setViewControllers([homeViewController], animated: false)
+        homeNavigation.tabBarItem = .init(title: "Home", image: nil, tag: 0)
+        
+        let kHalalViewModel = KHalalViewModel()
+        let kHalalViewController = KHalalViewController(viewModel: kHalalViewModel)
+        let kHalalNavigation = UINavigationController()
+        kHalalNavigation.setViewControllers([kHalalViewController], animated: false)
+        kHalalNavigation.tabBarItem = .init(title: "K-Halal", image: nil, tag: 1)
+        
+        let qiblaViewModel = QiblaViewModel()
+        let qiblaViewController = QiblaViewController(viewModel: qiblaViewModel)
+        let qiblaNavigation = UINavigationController()
+        qiblaNavigation.setViewControllers([qiblaViewController], animated: false)
+        qiblaNavigation.tabBarItem = .init(title: "Qibla", image: nil, tag: 2)
+        
+        let lunchBoxViewModel = LunchBoxViewModel()
+        let lunchBoxViewController = LunchBoxViewController(viewModel: lunchBoxViewModel)
+        let lunchBoxNavigation = UINavigationController()
+        lunchBoxNavigation.setViewControllers([lunchBoxViewController], animated: false)
+        lunchBoxNavigation.tabBarItem = .init(title: "Lunch", image: nil, tag: 3)
+        
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [homeNavigation, kHalalNavigation, qiblaNavigation, lunchBoxNavigation]
+        
+        self.window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
+    }
 }
 

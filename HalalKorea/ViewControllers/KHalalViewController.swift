@@ -15,13 +15,11 @@ import RxViewController
 class KHalalViewController: UIViewController {
     // MARK: - Variables
     private let viewModel: KHalalViewModel
-    private let coordinator: KHalalCoordinator
     private let disposeBag = DisposeBag()
     
     // MARK: - Initialize
-    init(viewModel: KHalalViewModel, coordinator: KHalalCoordinator) {
+    init(viewModel: KHalalViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         
         super.init(nibName: nil, bundle: nil)
     }

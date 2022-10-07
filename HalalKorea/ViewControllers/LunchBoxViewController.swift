@@ -15,13 +15,11 @@ import RxViewController
 class LunchBoxViewController: UIViewController {
     // MARK: - Variables
     private let viewModel: LunchBoxViewModel
-    private let coordinator: LunchBoxCoordinator
     private let disposeBag = DisposeBag()
     
     // MARK: - Initialize
-    init(viewModel: LunchBoxViewModel, coordinator: LunchBoxCoordinator) {
+    init(viewModel: LunchBoxViewModel) {
         self.viewModel = viewModel
-        self.coordinator = coordinator
         
         super.init(nibName: nil, bundle: nil)
     }
