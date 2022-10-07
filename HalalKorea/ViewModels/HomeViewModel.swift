@@ -12,6 +12,7 @@ import RxCocoa
 class HomeViewModel {
     
     struct Input {
+        
     }
     
     struct Output {

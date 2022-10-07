@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Private Methods
     private func parseInit() {
-
+        let _ = ParseService.shared
     }
 
 }

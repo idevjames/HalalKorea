@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 import RxGesture
 import RxViewController
+import SnapKit
+import Then
 
 protocol HomeViewControllerDelegate {
     
@@ -25,7 +27,6 @@ class HomeViewController: UIViewController {
     
     // MARK: - UI Components
     private lazy var navigationView = CustomNavigationTitleView()
-    
     private lazy var compassImageView = UIImageView().then {
         $0.image = Asset.Images.Icon.iconCompass.image
         $0.contentMode = .scaleAspectFit
@@ -82,25 +83,51 @@ class HomeViewController: UIViewController {
         
         setupUI()
         setLayouts()
+        bindUI()
         bindViewModel()
+    }
+    
+    private func bindUI() {
+        // Binding Button Event
+        Observable.merge(
+            prayerTimeButton.rx.tapGesture().when(.recognized),
+            lunchBoxButton.rx.tapGesture().when(.recognized),
+            miceTourButton.rx.tapGesture().when(.recognized),
+            metaverseButton.rx.tapGesture().when(.recognized),
+            storeButton.rx.tapGesture().when(.recognized),
+            accommodationButton.rx.tapGesture().when(.recognized)
+        )
+        .compactMap { $0.view?.tag }
+        .asDriverComplete()
+        .drive(onNext: { [weak self] in self?.moveToChild(tag: $0) })
+        .disposed(by: disposeBag)
     }
         
     private func bindViewModel() {
-        // Binding Button Event
-        Observable.merge(prayerTimeButton.rx.tapGesture().when(.recognized),
-                         lunchBoxButton.rx.tapGesture().when(.recognized),
-                         miceTourButton.rx.tapGesture().when(.recognized),
-                         metaverseButton.rx.tapGesture().when(.recognized),
-                         storeButton.rx.tapGesture().when(.recognized),
-                         accommodationButton.rx.tapGesture().when(.recognized))
-            .asDriverComplete()
-            .compactMap { $0.view?.tag }
-            .drive { tag in
-                print(tag)
-            }
-            .disposed(by: disposeBag)
-        
         let output = viewModel.transform(HomeViewModel.Input())
+    }
+    
+    private func moveToChild(tag: Int) {
+        
+        switch tag {
+        case 0:
+            print("tag 0")
+            
+        case 1:
+            print("tag 1")
+            
+        case 2:
+            print("tag 2")
+            
+        case 3:
+            print("tag 3")
+            
+        default:
+            break
+        }
+        
+        let listViewController = ListViewController(viewModel: ListViewModel())
+        self.navigationController?.pushViewController(listViewController, animated: true)
     }
 }
 

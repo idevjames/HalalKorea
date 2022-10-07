@@ -21,14 +21,14 @@ class ParseService {
         Parse.initialize(with: configuration)
         
         // SubClassing 등록
-        AccommodationDTO.registerSubclass()
+        AccommodationModel.registerSubclass()
     }
     
     // MARK: - Methods
     func fetchObjects<T>(completion: @escaping (Result<[T], Error>) -> Void) where T: PFObject {
         let query = T.query()
         
-        query?.limit = 1
+        query?.limit = 10
         query?.findObjectsInBackground { (objects, error) in
             if let error = error {
                 completion(.failure(error))

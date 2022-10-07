@@ -1,5 +1,5 @@
 //
-//  AccommodationDTO.swift
+//  accommodationModel.swift
 //  HalalKorea
 //
 //  Created by 🌟 행 on 2022/07/16.
@@ -8,14 +8,10 @@
 import Foundation
 import Parse
 
-class AccommodationDTO: PFObject, PFSubclassing {
+class AccommodationModel: PFObject, PFSubclassing {
     /// table name 설정
     static func parseClassName() -> String {
         return "tb_accommodation"
-    }
-    
-    func dd() -> String {
-        return ""
     }
     
     // 필드값 설정

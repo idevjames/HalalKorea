@@ -8,7 +8,7 @@
 import Foundation
 import Parse
 
-class CompanyIntroduceDTO: PFObject, PFSubclassing {
+class CompanyIntroduceModel: PFObject, PFSubclassing {
     /// table name 설정
     static func parseClassName() -> String {
         return "tb_company_introduce"

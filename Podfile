@@ -10,6 +10,7 @@ target 'HalalKorea' do
   pod 'RxCocoa', '~> 6.2'
   pod 'RxGesture'
   pod 'RxViewController'
+  pod 'RxDataSources'
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'FSPagerView'
