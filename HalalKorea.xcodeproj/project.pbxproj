@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1A22CD4628A261C9005F4BC6 /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CD4528A261C9005F4BC6 /* RxViewController+Extension.swift */; };
 		1A22CD4828A262A0005F4BC6 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CD4728A262A0005F4BC6 /* ObservableType+Extension.swift */; };
+		1A47972928F32E3900CD00A3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47972828F32E3900CD00A3 /* UIImage+Extension.swift */; };
+		1A4D75A928F3F85C00C8C04C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75A828F3F85C00C8C04C /* DetailViewController.swift */; };
+		1A4D75AB28F3F86200C8C04C /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75AA28F3F86200C8C04C /* DetailViewModel.swift */; };
+		1A4D75AD28F3FE3400C8C04C /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75AC28F3FE3400C8C04C /* ContentCell.swift */; };
+		1A4D75AF28F3FEC600C8C04C /* SNSContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75AE28F3FEC600C8C04C /* SNSContentCell.swift */; };
 		1A5DC71F2882AC54009CDEFD /* AccommodationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DC71E2882AC54009CDEFD /* AccommodationModel.swift */; };
 		1A5DC7212882AEA8009CDEFD /* PFObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DC7202882AEA8009CDEFD /* PFObject+Extension.swift */; };
 		1A5DC7242882E800009CDEFD /* CompanyIntroduceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DC7232882E800009CDEFD /* CompanyIntroduceModel.swift */; };
@@ -38,8 +43,8 @@
 		1AFBD5C4289D8BDF00708661 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFBD5C3289D8BDF00708661 /* HomeViewModel.swift */; };
 		5CB6B12CE64BF6FAB52A6B86 /* Pods_HalalKorea_HalalKoreaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 825E3ACB31EA0CAAB2D7C447 /* Pods_HalalKorea_HalalKoreaUITests.framework */; };
 		9BDF0EC8657F3DC58010AF16 /* Pods_HalalKorea.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 650B9CADB2B443CD5F8ECDE3 /* Pods_HalalKorea.framework */; };
-		B1E5448C28EFDB7600846DD7 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5448B28EFDB7600846DD7 /* ListViewController.swift */; };
-		B1E5448E28EFDB8500846DD7 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5448D28EFDB8500846DD7 /* ListViewModel.swift */; };
+		B1E5448C28EFDB7600846DD7 /* AccommodationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5448B28EFDB7600846DD7 /* AccommodationViewController.swift */; };
+		B1E5448E28EFDB8500846DD7 /* AccommodationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5448D28EFDB8500846DD7 /* AccommodationViewModel.swift */; };
 		B1E5449128EFDC5400846DD7 /* ListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5449028EFDC5400846DD7 /* ListCell.swift */; };
 		B1E5449328F0055300846DD7 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E5449228F0055300846DD7 /* CustomLabel.swift */; };
 		C13E28F33A1EDFFAC50C3219 /* Pods_HalalKoreaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3403C56C213E010AB4EAF5E /* Pods_HalalKoreaTests.framework */; };
@@ -66,6 +71,11 @@
 		1555938E01142A262DB5DBBB /* Pods-HalalKoreaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalalKoreaTests.release.xcconfig"; path = "Target Support Files/Pods-HalalKoreaTests/Pods-HalalKoreaTests.release.xcconfig"; sourceTree = "<group>"; };
 		1A22CD4528A261C9005F4BC6 /* RxViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxViewController+Extension.swift"; sourceTree = "<group>"; };
 		1A22CD4728A262A0005F4BC6 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
+		1A47972828F32E3900CD00A3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		1A4D75A828F3F85C00C8C04C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1A4D75AA28F3F86200C8C04C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		1A4D75AC28F3FE3400C8C04C /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
+		1A4D75AE28F3FEC600C8C04C /* SNSContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSContentCell.swift; sourceTree = "<group>"; };
 		1A5DC71E2882AC54009CDEFD /* AccommodationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationModel.swift; sourceTree = "<group>"; };
 		1A5DC7202882AEA8009CDEFD /* PFObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PFObject+Extension.swift"; sourceTree = "<group>"; };
 		1A5DC7232882E800009CDEFD /* CompanyIntroduceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyIntroduceModel.swift; sourceTree = "<group>"; };
@@ -104,8 +114,8 @@
 		825E3ACB31EA0CAAB2D7C447 /* Pods_HalalKorea_HalalKoreaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HalalKorea_HalalKoreaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3403C56C213E010AB4EAF5E /* Pods_HalalKoreaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HalalKoreaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA5AF1A173FCB9AEEBBEF6BF /* Pods-HalalKorea.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalalKorea.debug.xcconfig"; path = "Target Support Files/Pods-HalalKorea/Pods-HalalKorea.debug.xcconfig"; sourceTree = "<group>"; };
-		B1E5448B28EFDB7600846DD7 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		B1E5448D28EFDB8500846DD7 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		B1E5448B28EFDB7600846DD7 /* AccommodationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationViewController.swift; sourceTree = "<group>"; };
+		B1E5448D28EFDB8500846DD7 /* AccommodationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationViewModel.swift; sourceTree = "<group>"; };
 		B1E5449028EFDC5400846DD7 /* ListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCell.swift; sourceTree = "<group>"; };
 		B1E5449228F0055300846DD7 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		CB73BAD5E3EDAAF11C45C6EE /* Pods-HalalKorea-HalalKoreaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalalKorea-HalalKoreaUITests.debug.xcconfig"; path = "Target Support Files/Pods-HalalKorea-HalalKoreaUITests/Pods-HalalKorea-HalalKoreaUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -247,7 +257,8 @@
 				1AFBD5A8289D212800708661 /* KHalalViewController.swift */,
 				1AFBD5AA289D214900708661 /* QiblaViewController.swift */,
 				1AFBD5AC289D215600708661 /* LunchBoxViewController.swift */,
-				B1E5448B28EFDB7600846DD7 /* ListViewController.swift */,
+				B1E5448B28EFDB7600846DD7 /* AccommodationViewController.swift */,
+				1A4D75A828F3F85C00C8C04C /* DetailViewController.swift */,
 			);
 			name = VIewControllers;
 			path = ViewControllers;
@@ -260,7 +271,8 @@
 				1AE2D4E228E312D3002A7F32 /* KHalalViewModel.swift */,
 				1AE2D4E428E312D9002A7F32 /* QiblaViewModel.swift */,
 				1AE2D4E628E312E1002A7F32 /* LunchBoxViewModel.swift */,
-				B1E5448D28EFDB8500846DD7 /* ListViewModel.swift */,
+				B1E5448D28EFDB8500846DD7 /* AccommodationViewModel.swift */,
+				1A4D75AA28F3F86200C8C04C /* DetailViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -284,6 +296,7 @@
 				1AFBD5B7289D2F4100708661 /* UIColor+Extention.swift */,
 				1A22CD4528A261C9005F4BC6 /* RxViewController+Extension.swift */,
 				1A22CD4728A262A0005F4BC6 /* ObservableType+Extension.swift */,
+				1A47972828F32E3900CD00A3 /* UIImage+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -324,6 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				B1E5449028EFDC5400846DD7 /* ListCell.swift */,
+				1A4D75AC28F3FE3400C8C04C /* ContentCell.swift */,
+				1A4D75AE28F3FEC600C8C04C /* SNSContentCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -597,19 +612,24 @@
 				1A5DC71F2882AC54009CDEFD /* AccommodationModel.swift in Sources */,
 				1AE2D4E328E312D3002A7F32 /* KHalalViewModel.swift in Sources */,
 				1AFBD5AB289D214900708661 /* QiblaViewController.swift in Sources */,
+				1A4D75A928F3F85C00C8C04C /* DetailViewController.swift in Sources */,
 				1A6CFF11287FF3A500AC8F39 /* AppDelegate.swift in Sources */,
 				1A22CD4828A262A0005F4BC6 /* ObservableType+Extension.swift in Sources */,
 				1AE2D4E728E312E1002A7F32 /* LunchBoxViewModel.swift in Sources */,
 				1A5DE39F28EDD6440071A354 /* ImageButton.swift in Sources */,
+				1A47972928F32E3900CD00A3 /* UIImage+Extension.swift in Sources */,
 				1A22CD4628A261C9005F4BC6 /* RxViewController+Extension.swift in Sources */,
+				1A4D75AF28F3FEC600C8C04C /* SNSContentCell.swift in Sources */,
 				1A6CFF52288006AC00AC8F39 /* ParseService.swift in Sources */,
 				1A5DC7212882AEA8009CDEFD /* PFObject+Extension.swift in Sources */,
+				1A4D75AD28F3FE3400C8C04C /* ContentCell.swift in Sources */,
 				1A5DE39C28EACCE50071A354 /* XCAssets+Generated.swift in Sources */,
-				B1E5448C28EFDB7600846DD7 /* ListViewController.swift in Sources */,
+				B1E5448C28EFDB7600846DD7 /* AccommodationViewController.swift in Sources */,
 				1AFBD5B8289D2F4100708661 /* UIColor+Extention.swift in Sources */,
 				1AFBD5AD289D215600708661 /* LunchBoxViewController.swift in Sources */,
 				1A6CFF13287FF3A500AC8F39 /* SceneDelegate.swift in Sources */,
-				B1E5448E28EFDB8500846DD7 /* ListViewModel.swift in Sources */,
+				1A4D75AB28F3F86200C8C04C /* DetailViewModel.swift in Sources */,
+				B1E5448E28EFDB8500846DD7 /* AccommodationViewModel.swift in Sources */,
 				B1E5449128EFDC5400846DD7 /* ListCell.swift in Sources */,
 				1A5DC7242882E800009CDEFD /* CompanyIntroduceModel.swift in Sources */,
 				1AE2D4E528E312D9002A7F32 /* QiblaViewModel.swift in Sources */,

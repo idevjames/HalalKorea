@@ -28,12 +28,12 @@ class HomeViewController: UIViewController {
     // MARK: - UI Components
     private lazy var navigationView = CustomNavigationTitleView()
     private lazy var compassImageView = UIImageView().then {
-        $0.image = Asset.Images.Icon.iconCompass.image
+        $0.image = Asset.Images.compassImg.image
         $0.contentMode = .scaleAspectFit
     }
     
     private lazy var welcomeImageView = UIImageView().then {
-        $0.image = Asset.Images.Home.welcome.image
+        $0.image = Asset.Images.welcomeToHalalKorea.image
         $0.contentMode = .scaleAspectFit
     }
     
@@ -101,6 +101,20 @@ class HomeViewController: UIViewController {
         .asDriverComplete()
         .drive(onNext: { [weak self] in self?.moveToChild(tag: $0) })
         .disposed(by: disposeBag)
+        
+        // Image Resizing
+        self.rx.viewDidAppear
+            .filter { $0 }
+            .asDriverComplete()
+            .drive(onNext: { [weak self] _ in
+                self?.prayerTimeButton.imageResizing()
+                self?.lunchBoxButton.imageResizing()
+                self?.miceTourButton.imageResizing()
+                self?.metaverseButton.imageResizing()
+                self?.storeButton.imageResizing()
+                self?.accommodationButton.imageResizing()
+            })
+            .disposed(by: disposeBag)
     }
         
     private func bindViewModel() {
@@ -126,8 +140,8 @@ class HomeViewController: UIViewController {
             break
         }
         
-        let listViewController = ListViewController(viewModel: ListViewModel())
-        self.navigationController?.pushViewController(listViewController, animated: true)
+        let accommodationViewController = AccommodationViewController(viewModel: AccommodationViewModel())
+        self.navigationController?.pushViewController(accommodationViewController, animated: true)
     }
 }
 

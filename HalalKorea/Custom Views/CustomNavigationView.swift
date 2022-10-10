@@ -21,17 +21,17 @@ class CustomNavigationTitleView: UIView {
     
     lazy var mainImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
-        $0.image = Asset.Images.Home.homeHalalLogo.image
+        $0.image = Asset.Images.homeHalalLogo.image
     }
     
     lazy var leftItem = UIImageView().then {
         $0.contentMode = .scaleAspectFit
-        $0.image = Asset.Images.Common.commonBar.image
+        $0.image = Asset.Images.commonBar.image
     }
     
     lazy var rightItem = UIImageView().then {
         $0.contentMode = .scaleAspectFit
-        $0.image = Asset.Images.Common.commonChatbot.image
+        $0.image = Asset.Images.commonChatbot.image
     }
     
     override init(frame: CGRect) {

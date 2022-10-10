@@ -119,4 +119,16 @@ class AccommodationModel: PFObject, PFSubclassing {
     var pickup: String {
         get { self.object(forKey: "col_pickup") as? String ?? "" }
     }
+    
+    var mainImage: URL? {
+        let imageURLs = [imageURL1, imageURL2, imageURL3, imageURL4, imageURL5]
+        
+        for imageURL in imageURLs {
+            if !imageURL.isEmpty, let url = URL(string: imageURL) {
+                return url
+            }
+        }
+        
+        return nil
+    }
 }

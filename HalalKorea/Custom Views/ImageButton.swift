@@ -35,6 +35,12 @@ class ImageButton: UIView {
         $0.layer.shadowOpacity = 0.1
     }
     
+    private lazy var stackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.alignment = .fill
+        $0.distribution = .fillEqually
+    }
+    
     private lazy var imageView = UIImageView().then {
         $0.contentMode = .bottom
     }
@@ -58,35 +64,41 @@ class ImageButton: UIView {
         setLayouts()
     }
     
+    public func imageResizing() {
+        imageView.image = imageView.image?.aspectFitImage(inRect: imageView.frame)
+    }
+    
     private func setupUI() {
         addSubview(backgroundView)
-        backgroundView.addSubview(imageView)
-        backgroundView.addSubview(titleImageView)
+        backgroundView.addSubview(stackView)
+        
+        stackView.addArrangedSubview(imageView)
+        stackView.addArrangedSubview(titleImageView)
         
         switch type! {
         case .prayerTime:
-            imageView.image = Asset.Images.Icon.iconPrayerTime.image
-            titleImageView.image = Asset.Images.Home.prayerTime.image
+            imageView.image = Asset.Images.prayerImg.image
+            titleImageView.image = Asset.Images.prayerTime.image
             
         case .lunchBox:
-            imageView.image = Asset.Images.Icon.iconLunchBox.image
-            titleImageView.image = Asset.Images.Home.lunchBox.image
+            imageView.image = Asset.Images.lunchImg.image
+            titleImageView.image = Asset.Images.lunchBox.image
             
         case .miceTour:
-            imageView.image = Asset.Images.Icon.iconMice.image
-            titleImageView.image = Asset.Images.Home.miceTour.image
+            imageView.image = Asset.Images.miceImg.image
+            titleImageView.image = Asset.Images.miceTour.image
             
         case .metaverse:
-            imageView.image = Asset.Images.Icon.iconMetaverse.image
-            titleImageView.image = Asset.Images.Home.metaverse.image
+            imageView.image = Asset.Images.metaImg.image
+            titleImageView.image = Asset.Images.metaverse.image
             
         case .store:
-            imageView.image = Asset.Images.Icon.iconStore.image
-            titleImageView.image = Asset.Images.Home.store.image
+            imageView.image = Asset.Images.storeImg.image
+            titleImageView.image = Asset.Images.store.image
             
         case .accommodation:
-            imageView.image = Asset.Images.Icon.iconAccommodation.image
-            titleImageView.image = Asset.Images.Home.accommodation.image
+            imageView.image = Asset.Images.accomImg.image
+            titleImageView.image = Asset.Images.accommodation.image
         }
     }
     
@@ -95,15 +107,9 @@ class ImageButton: UIView {
             make.top.leading.trailing.bottom.equalToSuperview()
         }
         
-        imageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.58)
-        }
-        
-        titleImageView.snp.makeConstraints { make in
-            make.top.equalTo(imageView.snp.bottom)
-            make.bottom.leading.trailing.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.42)
+        stackView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }

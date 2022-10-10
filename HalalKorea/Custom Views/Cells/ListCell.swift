@@ -14,18 +14,22 @@ import Kingfisher
 class ListCell: UITableViewCell {
     static public let identifier = "ListCell"
     
+    // MARK: - Variables
+    private let stackViewHeight: CGFloat = 40.0
+    private let descriptionLabelHeight: CGFloat = 50.0
+
     // MARK: - UI Components
     private lazy var containerView = UIView().then {
         $0.backgroundColor = .white
     }
     
     private lazy var mainImageView = UIImageView().then {
-        $0.image = Asset.Images.Logos.splashHalalLogo.image
-        $0.contentMode = .scaleAspectFit
+        $0.image = Asset.Images.imgNo.image
+        $0.contentMode = .scaleToFill
     }
     
     private lazy var descriptionLabel = CustomLabel().then {
-        $0.text = "NONO"
+        $0.text = ""
         $0.numberOfLines = 0
         $0.backgroundColor = Asset.Colors.primaryGreen.color.withAlphaComponent(0.7)
         $0.textColor = .white
@@ -33,7 +37,7 @@ class ListCell: UITableViewCell {
         $0.clipsToBounds = true
         $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
         $0.layer.cornerRadius = descriptionLabelHeight / 2
-        $0.leftPadding = 30
+        $0.leftPadding = 20.0
         $0.rightPadding = 10.0
     }
     
@@ -45,27 +49,28 @@ class ListCell: UITableViewCell {
     }
     
     private lazy var distanceImageView = UIImageView().then {
-        $0.image = Asset.Images.Icon.iconMice.image
+        $0.image = Asset.Images.mapMarker.image.withAlignmentRectInsets(UIEdgeInsets(top: -10, left: -5, bottom: -10, right: 0))
         $0.contentMode = .scaleAspectFit
     }
     
     private lazy var distanceLabel = UILabel().then {
         $0.text = ""
+        $0.font = .systemFont(ofSize: 11)
         $0.textColor = .darkGray
     }
     
     private lazy var youtubeImageView = UIImageView().then {
-        $0.image = Asset.Images.Icon.iconMice.image
+        $0.image = Asset.Images.icYoutube.image.withAlignmentRectInsets(UIEdgeInsets(top: -10, left: 0, bottom: -10, right: 0))
         $0.contentMode = .scaleAspectFit
     }
     
     private lazy var instagramImageView = UIImageView().then {
-        $0.image = Asset.Images.Icon.iconMice.image
+        $0.image = Asset.Images.icInstagram.image.withAlignmentRectInsets(UIEdgeInsets(top: -10, left: 0, bottom: -10, right: 0))
         $0.contentMode = .scaleAspectFit
     }
     
     private lazy var naverImageView = UIImageView().then {
-        $0.image = Asset.Images.Icon.iconMice.image
+        $0.image = Asset.Images.icNaverblog.image.withAlignmentRectInsets(UIEdgeInsets(top: -10, left: 0, bottom: -10, right: 0))
         $0.contentMode = .scaleAspectFit
     }
     
@@ -73,17 +78,13 @@ class ListCell: UITableViewCell {
         $0.text = "Korea Quality"
         $0.backgroundColor = .black
         $0.textColor = .white
-        $0.font = .systemFont(ofSize: 13, weight: .medium)
+        $0.font = .systemFont(ofSize: 11, weight: .medium)
         $0.clipsToBounds = true
         $0.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
         $0.layer.cornerRadius = stackViewHeight / 2
         $0.leftPadding = 10.0
         $0.rightPadding = 5.0
     }
-    
-    // MARK: - Variables
-    private let stackViewHeight: CGFloat = 30.0
-    private let descriptionLabelHeight: CGFloat = 50.0
     
     // MARK: - Initializes
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -109,31 +110,17 @@ class ListCell: UITableViewCell {
     public func configure(model: AnyObject?) {
         guard let model = model as? AccommodationModel else { return }
         
-        let imageURL = findImage(imageURLs: [model.imageURL1,
-                                                   model.imageURL2,
-                                                   model.imageURL3,
-                                                   model.imageURL4,
-                                                   model.imageURL5])
         descriptionLabel.text = model.title
         
-        if let imageURL = imageURL {
-            mainImageView.kf.setImage(with: imageURL)
+        if let imageURL = model.mainImage {
+            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
         }
         
         distanceLabel.text = "19.492 km"
         certLabel.isHidden = model.invisible
     }
     
-    /// 가장 먼저 데이터가 있는 URL로 이미지를 호출
-    private func findImage(imageURLs: [String]) -> URL? {
-        for imageURL in imageURLs {
-            if !imageURL.isEmpty, let url = URL(string: imageURL) {
-                return url
-            }
-        }
-        
-        return nil
-    }
+    // MARK: - Private Methods
 }
 
 extension ListCell {
@@ -157,11 +144,11 @@ extension ListCell {
     private func setLayotus() {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-            make.height.equalTo(230)
         }
         
         mainImageView.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview()
+            make.height.equalTo(200)
         }
         
         descriptionLabel.snp.makeConstraints { make in
