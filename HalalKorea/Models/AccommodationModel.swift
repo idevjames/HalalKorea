@@ -131,4 +131,42 @@ class AccommodationModel: PFObject, PFSubclassing {
         
         return nil
     }
+    
+    var contents: [(image: UIImage, title: String, description: String)] {
+        var contents = [(image: UIImage, title: String, description: String)]()
+        
+        contents.append((image: Asset.Images.icCheckIn.image,
+                         title: "Check in",
+                         description: checkin))
+        
+        contents.append((image: Asset.Images.icCheckOut.image,
+                         title: "Check out",
+                         description: checkout))
+        
+        contents.append((image: Asset.Images.icRestroom.image,
+                         title: "Room count",
+                         description: roomCount))
+        
+        contents.append((image: Asset.Images.imgNo.image,
+                         title: "More information",
+                         description: overview))
+        
+        contents.append((image: Asset.Images.imgNo.image,
+                         title: "Address",
+                         description: addr1))
+        
+        contents.append((image: Asset.Images.imgNo.image,
+                         title: "Contact",
+                         description: tel))
+        
+        contents.append((image: Asset.Images.icCooking.image,
+                         title: "Cooking",
+                         description: chkCooking))
+        
+//        contents.append((image: Asset.Images.icCheckIn.image,
+//                         title: "Parking",
+//                         description: parking))
+        
+        return contents
+    }
 }
