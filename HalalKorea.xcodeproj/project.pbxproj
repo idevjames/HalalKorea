@@ -12,8 +12,11 @@
 		1A47972928F32E3900CD00A3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47972828F32E3900CD00A3 /* UIImage+Extension.swift */; };
 		1A4D75A928F3F85C00C8C04C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75A828F3F85C00C8C04C /* DetailViewController.swift */; };
 		1A4D75AB28F3F86200C8C04C /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75AA28F3F86200C8C04C /* DetailViewModel.swift */; };
-		1A4D75AD28F3FE3400C8C04C /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75AC28F3FE3400C8C04C /* ContentCell.swift */; };
-		1A4D75AF28F3FEC600C8C04C /* SNSContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75AE28F3FEC600C8C04C /* SNSContentCell.swift */; };
+		1A4D75B328F5A93B00C8C04C /* DetailContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75B228F5A93B00C8C04C /* DetailContentView.swift */; };
+		1A4D75B628F5AA0B00C8C04C /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75B528F5AA0B00C8C04C /* Enums.swift */; };
+		1A4D75B828F5AD6F00C8C04C /* ReadMoreTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75B728F5AD6F00C8C04C /* ReadMoreTextView.swift */; };
+		1A4D75BA28F5AD8400C8C04C /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75B928F5AD8400C8C04C /* UITextView+Extension.swift */; };
+		1A4D75BC28F5B41300C8C04C /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4D75BB28F5B41300C8C04C /* String+Extension.swift */; };
 		1A5DC71F2882AC54009CDEFD /* AccommodationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DC71E2882AC54009CDEFD /* AccommodationModel.swift */; };
 		1A5DC7212882AEA8009CDEFD /* PFObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DC7202882AEA8009CDEFD /* PFObject+Extension.swift */; };
 		1A5DC7242882E800009CDEFD /* CompanyIntroduceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5DC7232882E800009CDEFD /* CompanyIntroduceModel.swift */; };
@@ -74,8 +77,11 @@
 		1A47972828F32E3900CD00A3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		1A4D75A828F3F85C00C8C04C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1A4D75AA28F3F86200C8C04C /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
-		1A4D75AC28F3FE3400C8C04C /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
-		1A4D75AE28F3FEC600C8C04C /* SNSContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SNSContentCell.swift; sourceTree = "<group>"; };
+		1A4D75B228F5A93B00C8C04C /* DetailContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentView.swift; sourceTree = "<group>"; };
+		1A4D75B528F5AA0B00C8C04C /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		1A4D75B728F5AD6F00C8C04C /* ReadMoreTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadMoreTextView.swift; sourceTree = "<group>"; };
+		1A4D75B928F5AD8400C8C04C /* UITextView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
+		1A4D75BB28F5B41300C8C04C /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		1A5DC71E2882AC54009CDEFD /* AccommodationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccommodationModel.swift; sourceTree = "<group>"; };
 		1A5DC7202882AEA8009CDEFD /* PFObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PFObject+Extension.swift"; sourceTree = "<group>"; };
 		1A5DC7232882E800009CDEFD /* CompanyIntroduceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyIntroduceModel.swift; sourceTree = "<group>"; };
@@ -149,6 +155,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A4D75B428F5A9FD00C8C04C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				1A4D75B528F5AA0B00C8C04C /* Enums.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		1A5DC7222882D9AA009CDEFD /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +187,8 @@
 				1A5DE39E28EDD6440071A354 /* ImageButton.swift */,
 				1A66FF9E28EF11AD006506CD /* CustomNavigationView.swift */,
 				B1E5449228F0055300846DD7 /* CustomLabel.swift */,
+				1A4D75B228F5A93B00C8C04C /* DetailContentView.swift */,
+				1A4D75B728F5AD6F00C8C04C /* ReadMoreTextView.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -208,6 +224,7 @@
 				1A6CFF46287FF84300AC8F39 /* VIewControllers */,
 				1A6CFF47287FF84800AC8F39 /* ViewModels */,
 				1A5DE39D28EDD62B0071A354 /* Custom Views */,
+				1A4D75B428F5A9FD00C8C04C /* Enums */,
 				1A5DC7222882D9AA009CDEFD /* Models */,
 				1A6CFF43287FF82A00AC8F39 /* Services */,
 				1A6CFF4A287FF85E00AC8F39 /* Extensions */,
@@ -297,6 +314,8 @@
 				1A22CD4528A261C9005F4BC6 /* RxViewController+Extension.swift */,
 				1A22CD4728A262A0005F4BC6 /* ObservableType+Extension.swift */,
 				1A47972828F32E3900CD00A3 /* UIImage+Extension.swift */,
+				1A4D75B928F5AD8400C8C04C /* UITextView+Extension.swift */,
+				1A4D75BB28F5B41300C8C04C /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -337,8 +356,6 @@
 			isa = PBXGroup;
 			children = (
 				B1E5449028EFDC5400846DD7 /* ListCell.swift */,
-				1A4D75AC28F3FE3400C8C04C /* ContentCell.swift */,
-				1A4D75AE28F3FEC600C8C04C /* SNSContentCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -604,6 +621,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AFBD5A9289D212800708661 /* KHalalViewController.swift in Sources */,
+				1A4D75BC28F5B41300C8C04C /* String+Extension.swift in Sources */,
 				B1E5449328F0055300846DD7 /* CustomLabel.swift in Sources */,
 				1A66FF9F28EF11AD006506CD /* CustomNavigationView.swift in Sources */,
 				1A6CFF15287FF3A500AC8F39 /* HomeViewController.swift in Sources */,
@@ -619,20 +637,22 @@
 				1A5DE39F28EDD6440071A354 /* ImageButton.swift in Sources */,
 				1A47972928F32E3900CD00A3 /* UIImage+Extension.swift in Sources */,
 				1A22CD4628A261C9005F4BC6 /* RxViewController+Extension.swift in Sources */,
-				1A4D75AF28F3FEC600C8C04C /* SNSContentCell.swift in Sources */,
 				1A6CFF52288006AC00AC8F39 /* ParseService.swift in Sources */,
 				1A5DC7212882AEA8009CDEFD /* PFObject+Extension.swift in Sources */,
-				1A4D75AD28F3FE3400C8C04C /* ContentCell.swift in Sources */,
 				1A5DE39C28EACCE50071A354 /* XCAssets+Generated.swift in Sources */,
 				B1E5448C28EFDB7600846DD7 /* AccommodationViewController.swift in Sources */,
 				1AFBD5B8289D2F4100708661 /* UIColor+Extention.swift in Sources */,
 				1AFBD5AD289D215600708661 /* LunchBoxViewController.swift in Sources */,
+				1A4D75B628F5AA0B00C8C04C /* Enums.swift in Sources */,
 				1A6CFF13287FF3A500AC8F39 /* SceneDelegate.swift in Sources */,
 				1A4D75AB28F3F86200C8C04C /* DetailViewModel.swift in Sources */,
 				B1E5448E28EFDB8500846DD7 /* AccommodationViewModel.swift in Sources */,
 				B1E5449128EFDC5400846DD7 /* ListCell.swift in Sources */,
+				1A4D75BA28F5AD8400C8C04C /* UITextView+Extension.swift in Sources */,
 				1A5DC7242882E800009CDEFD /* CompanyIntroduceModel.swift in Sources */,
+				1A4D75B328F5A93B00C8C04C /* DetailContentView.swift in Sources */,
 				1AE2D4E528E312D9002A7F32 /* QiblaViewModel.swift in Sources */,
+				1A4D75B828F5AD6F00C8C04C /* ReadMoreTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

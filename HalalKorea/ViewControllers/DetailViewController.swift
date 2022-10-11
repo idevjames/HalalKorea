@@ -46,6 +46,41 @@ class DetailViewController: UIViewController {
         $0.rightPadding = 10.0
     }
     
+    private lazy var snsStackView = UIStackView().then {
+        $0.axis = .horizontal
+        $0.distribution = .fillEqually
+        $0.alignment = .fill
+    }
+    
+    private lazy var youtubeImageView = UIImageView().then {
+        $0.image = Asset.Images.icYoutube.image
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var instagramImageView = UIImageView().then {
+        $0.image = Asset.Images.icInstagram.image
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var naverImageView = UIImageView().then {
+        $0.image = Asset.Images.icNaverblog.image
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var contentStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.alignment = .fill
+        $0.distribution = .fill
+        $0.spacing = 10.0
+    }
+    
+    private lazy var directionButton = UIButton().then {
+        $0.setTitle("Get Directions", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 13, weight: .semibold)
+        $0.backgroundColor = Asset.Colors.primaryGreen.color
+    }
+        
     // MARK: - Initialize
     init(viewModel: DetailViewModel, model: AnyObject) {
         self.viewModel = viewModel
@@ -80,7 +115,6 @@ class DetailViewController: UIViewController {
         )
         
         output.accommodationModel
-            
             .asDriverComplete()
             .drive(onNext: { [weak self] in
                 self?.configureAccommodation(model: $0)
@@ -94,6 +128,10 @@ class DetailViewController: UIViewController {
         }
         
         descriptionLabel.text = model.title
+        
+        model.contents.forEach {
+            contentStackView.addArrangedSubview(DetailContentView(content: $0))
+        }
     }
 }
 
@@ -107,11 +145,23 @@ extension DetailViewController {
         scrollView.addSubview(containerView)
         containerView.addSubview(mainImageView)
         containerView.addSubview(descriptionLabel)
+        
+        containerView.addSubview(snsStackView)
+        snsStackView.addArrangedSubview(UIView())
+        snsStackView.addArrangedSubview(youtubeImageView)
+        snsStackView.addArrangedSubview(UIView())
+        snsStackView.addArrangedSubview(instagramImageView)
+        snsStackView.addArrangedSubview(UIView())
+        snsStackView.addArrangedSubview(naverImageView)
+        snsStackView.addArrangedSubview(UIView())
+        
+        containerView.addSubview(contentStackView)
+        containerView.addSubview(directionButton)
     }
     
     private func setLayouts() {
         scrollView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
         containerView.snp.makeConstraints { make in
@@ -129,6 +179,23 @@ extension DetailViewController {
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview().inset(30)
             make.bottom.equalTo(mainImageView.snp.bottom).inset(30)
+        }
+        
+        snsStackView.snp.makeConstraints { make in
+            make.top.equalTo(mainImageView.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(35)
+        }
+        
+        contentStackView.snp.makeConstraints { make in
+            make.top.equalTo(snsStackView.snp.bottom).offset(10)
+            make.leading.trailing.equalToSuperview()
+        }
+        
+        directionButton.snp.makeConstraints { make in
+            make.top.equalTo(contentStackView.snp.bottom).offset(5)
+            make.leading.trailing.bottomMargin.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(50)
         }
     }
 }

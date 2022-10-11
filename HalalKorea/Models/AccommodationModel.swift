@@ -132,41 +132,37 @@ class AccommodationModel: PFObject, PFSubclassing {
         return nil
     }
     
-    var contents: [(image: UIImage, title: String, description: String)] {
-        var contents = [(image: UIImage, title: String, description: String)]()
+    var contents: [DetailContent] {
+        var contents = [DetailContent]()
         
-        contents.append((image: Asset.Images.icCheckIn.image,
-                         title: "Check in",
-                         description: checkin))
+        contents.append(.init(image: Asset.Images.icCheckIn.image,
+                              title: "Check in",
+                              content: checkin))
         
-        contents.append((image: Asset.Images.icCheckOut.image,
+        contents.append(.init(image: Asset.Images.icCheckOut.image,
                          title: "Check out",
-                         description: checkout))
+                         content: checkout))
         
-        contents.append((image: Asset.Images.icRestroom.image,
+        contents.append(.init(image: Asset.Images.icRestroom.image,
                          title: "Room count",
-                         description: roomCount))
+                         content: roomCount))
         
-        contents.append((image: Asset.Images.imgNo.image,
+        contents.append(.init(image: Asset.Images.imgNo.image,
                          title: "More information",
-                         description: overview))
+                         content: overview))
         
-        contents.append((image: Asset.Images.imgNo.image,
+        contents.append(.init(image: Asset.Images.imgNo.image,
                          title: "Address",
-                         description: addr1))
+                         content: addr1))
         
-        contents.append((image: Asset.Images.imgNo.image,
+        contents.append(.init(image: Asset.Images.imgNo.image,
                          title: "Contact",
-                         description: tel))
+                         content: tel))
         
-        contents.append((image: Asset.Images.icCooking.image,
+        contents.append(.init(image: Asset.Images.icCooking.image,
                          title: "Cooking",
-                         description: chkCooking))
-        
-//        contents.append((image: Asset.Images.icCheckIn.image,
-//                         title: "Parking",
-//                         description: parking))
-        
+                         content: chkCooking))
+                
         return contents
     }
 }
