@@ -2,12 +2,12 @@ PODS:
   - Alamofire (5.6.2)
   - Bolts/Tasks (1.9.1)
   - Differentiator (5.0.0)
-  - FSPagerView (0.8.3)
   - Kingfisher (7.4.0)
   - Parse (1.19.3):
     - Parse/Core (= 1.19.3)
   - Parse/Core (1.19.3):
     - Bolts/Tasks (= 1.9.1)
+  - ReadMoreTextView (3.0.1)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
@@ -30,9 +30,9 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
-  - FSPagerView
   - Kingfisher
   - Parse
+  - ReadMoreTextView
   - RxCocoa (~> 6.2)
   - RxDataSources
   - RxGesture
@@ -47,9 +47,9 @@ SPEC REPOS:
     - Alamofire
     - Bolts
     - Differentiator
-    - FSPagerView
     - Kingfisher
     - Parse
+    - ReadMoreTextView
     - RxCocoa
     - RxDataSources
     - RxGesture
@@ -64,9 +64,9 @@ SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
-  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   Kingfisher: 596b207973051aae5e4c54a1c1cb39837ea10d36
   Parse: 0abb63a0ff6fa34a3f64b81d595a294e2ece143a
+  ReadMoreTextView: 19147adf93abce6d7271e14031a00303fe28720d
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
   RxGesture: f3efb47ed2d26a8082f7b660d4a59970e275a7f8
@@ -77,6 +77,6 @@ SPEC CHECKSUMS:
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
 
-PODFILE CHECKSUM: 53a2e56188c9800e4922dfabcb1ff55d747f9f43
+PODFILE CHECKSUM: a9807e162acfd5d8fb24f6b1a1a74fc81053708a
 
 COCOAPODS: 1.11.3

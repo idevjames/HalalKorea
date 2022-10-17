@@ -23,7 +23,11 @@ class DetailViewController: UIViewController {
     private let descriptionLabelHeight: CGFloat = 50.0
 
     // MARK: - UI Components
-    private lazy var scrollView = UIScrollView()
+    private lazy var scrollView = UIScrollView().then {
+        $0.isScrollEnabled = true
+        $0.isUserInteractionEnabled = true
+    }
+    
     private lazy var containerView = UIView().then {
         $0.backgroundColor = .white
     }
@@ -167,6 +171,7 @@ extension DetailViewController {
         containerView.snp.makeConstraints { make in
             make.top.bottom.equalTo(scrollView)
             make.left.right.equalTo(view)
+            make.width.equalTo(scrollView.snp.width)
         }
         
         mainImageView.snp.makeConstraints { make in
@@ -194,7 +199,7 @@ extension DetailViewController {
         
         directionButton.snp.makeConstraints { make in
             make.top.equalTo(contentStackView.snp.bottom).offset(5)
-            make.leading.trailing.bottomMargin.equalTo(view.safeAreaLayoutGuide)
+            make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(50)
         }
     }

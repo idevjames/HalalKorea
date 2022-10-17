@@ -19,7 +19,13 @@ class ListCell: UITableViewCell {
     private let descriptionLabelHeight: CGFloat = 50.0
 
     // MARK: - UI Components
-    private lazy var containerView = UIView().then {
+    private lazy var containerStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.distribution = .fill
+        $0.alignment = .fill
+    }
+    
+    private lazy var mainContentView = UIView().then {
         $0.backgroundColor = .white
     }
     
@@ -108,29 +114,56 @@ class ListCell: UITableViewCell {
     
     // MARK: - Methods
     public func configure(model: AnyObject?) {
-        guard let model = model as? AccommodationModel else { return }
-        
-        descriptionLabel.text = model.title
-        
+        if let model = model as? AccommodationModel {
+            makeAccommodation(model)
+        } else if let model = model as? LunchBoxModel {
+            makeLunchBox(model)
+        }
+    }
+    
+    // MARK: - Private Methods
+    private func makeAccommodation(_ model: AccommodationModel) {
         if let imageURL = model.mainImage {
-            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
+            mainImageView.kf.setImage(with: imageURL,
+                                      placeholder: Asset.Images.imgNo.image)
         }
         
+        descriptionLabel.text = model.title
         distanceLabel.text = "19.492 km"
         certLabel.isHidden = model.invisible
     }
     
-    // MARK: - Private Methods
+    private func makeLunchBox(_ model: LunchBoxModel) {
+        if let imageURL = model.mainImage {
+            mainImageView.kf.setImage(with: imageURL,
+                                      placeholder: Asset.Images.imgNo.image)
+        }
+        
+        descriptionLabel.text = model.lunchName
+        iconStackView.isHidden = true
+        
+        // cell spacing 처리
+        let spacingView = UIView()
+        containerStackView.addArrangedSubview(spacingView)
+        
+        spacingView.snp.makeConstraints { make in
+            make.height.equalTo(10)
+        }
+    }
 }
 
 extension ListCell {
     private func setupUI() {
         self.selectionStyle = .none
         
-        addSubview(containerView)
-        containerView.addSubview(mainImageView)
-        containerView.addSubview(descriptionLabel)
-        containerView.addSubview(iconStackView)
+        addSubview(containerStackView)
+        
+        containerStackView.addArrangedSubview(mainContentView)
+        
+        mainContentView.addSubview(mainImageView)
+        mainContentView.addSubview(descriptionLabel)
+        
+        containerStackView.addArrangedSubview(iconStackView)
         
         iconStackView.addArrangedSubview(distanceImageView)
         iconStackView.addArrangedSubview(distanceLabel)
@@ -142,25 +175,23 @@ extension ListCell {
     }
     
     private func setLayotus() {
-        containerView.snp.makeConstraints { make in
+        containerStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
         
         mainImageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(200)
         }
         
         descriptionLabel.snp.makeConstraints { make in
-            make.height.equalTo(descriptionLabelHeight)
             make.leading.equalToSuperview()
             make.trailing.equalToSuperview().inset(30)
             make.bottom.equalTo(mainImageView.snp.bottom).inset(30)
+            make.height.equalTo(descriptionLabelHeight)
         }
         
         iconStackView.snp.makeConstraints { make in
-            make.top.equalTo(mainImageView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(stackViewHeight)
         }
         

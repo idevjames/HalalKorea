@@ -89,7 +89,7 @@ class AccommodationModel: PFObject, PFSubclassing {
     }
     
     var addr1: String {
-        get { self.object(forKey: "col_add1") as? String ?? "" }
+        get { self.object(forKey: "col_addr1") as? String ?? "" }
     }
     
     var telName: String {
@@ -135,34 +135,62 @@ class AccommodationModel: PFObject, PFSubclassing {
     var contents: [DetailContent] {
         var contents = [DetailContent]()
         
-        contents.append(.init(image: Asset.Images.icCheckIn.image,
-                              title: "Check in",
-                              content: checkin))
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icCheckIn.image,
+                title: "Check in",
+                content: checkin
+            )
+        )
         
-        contents.append(.init(image: Asset.Images.icCheckOut.image,
-                         title: "Check out",
-                         content: checkout))
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icCheckOut.image,
+                title: "Check out",
+                content: checkout
+            )
+        )
         
-        contents.append(.init(image: Asset.Images.icRestroom.image,
-                         title: "Room count",
-                         content: roomCount))
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icRestroom.image,
+                title: "Room count",
+                content: roomCount
+            )
+        )
         
-        contents.append(.init(image: Asset.Images.imgNo.image,
-                         title: "More information",
-                         content: overview))
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icDet5.image,
+                title: "More information",
+                content: overview
+            )
+        )
         
-        contents.append(.init(image: Asset.Images.imgNo.image,
-                         title: "Address",
-                         content: addr1))
+        contents.append(
+            DetailContent(
+                image: Asset.Images.imgNo.image,
+                title: "Address",
+                content: addr1
+            )
+        )
         
-        contents.append(.init(image: Asset.Images.imgNo.image,
-                         title: "Contact",
-                         content: tel))
+        contents.append(
+            DetailContent(
+                image: Asset.Images.imgNo.image,
+                title: "Contact",
+                content: tel
+            )
+        )
         
-        contents.append(.init(image: Asset.Images.icCooking.image,
-                         title: "Cooking",
-                         content: chkCooking))
-                
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icCooking.image,
+                title: "Cooking",
+                content: chkCooking
+            )
+        )
+        
         return contents
     }
 }

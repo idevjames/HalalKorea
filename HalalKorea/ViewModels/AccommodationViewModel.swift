@@ -14,6 +14,7 @@ class AccommodationViewModel {
     struct Input {
         let didLoad: Observable<Void>
         let itemSelected: ControlEvent<IndexPath>
+        let loadMore: Observable<Bool>
     }
     
     struct Output {
@@ -23,29 +24,44 @@ class AccommodationViewModel {
     
     // MARK: - Variables
     private let disposeBag = DisposeBag()
-    private let output = Output()
     private var models = BehaviorRelay<[AccommodationModel]>(value: [])
     private var selectedModel = PublishSubject<AccommodationModel>()
+    private var startIndex: Int = 0
+    private let fetchingCount: Int = 10
+    private var isLoading: Bool = false
     
     // MARK: - Methods
     func transform(_ input: Input) -> Output {
         input.didLoad
             .flatMap { [weak self] in self!.fetch() }
-            .subscribe { [weak self] models in
-                self?.models.accept(models)
-            } onError: { error in
-                print("[fetching failed] \(error.localizedDescription)")
-            }
+            .subscribe(onNext: { [weak self] newModels in
+                guard let self = self else { return }
+                
+                self.models.accept(self.models.value + newModels)
+                self.startIndex = newModels.count
+            }, onError: { error in
+                print(error.localizedDescription)
+            })
             .disposed(by: disposeBag)
 
         input.itemSelected
             .compactMap { self.models.value[$0.row] }
-            .subscribe(onNext: { model in
-                self.selectedModel.onNext(model)
+            .bind(to: self.selectedModel)
+            .disposed(by: disposeBag)
+        
+        input.loadMore
+            .filter { $0 && !self.isLoading }
+            .flatMap { [weak self] _ in self!.fetch() }
+            .subscribe(onNext: { [weak self] newModels in
+                guard let self = self else { return }
+                
+                self.models.accept(self.models.value + newModels)
+                self.startIndex = newModels.count
             }, onError: { error in
-                print("[selected failed] \(error.localizedDescription)")
+                print(error.localizedDescription)
             })
             .disposed(by: disposeBag)
+
         
         return Output(models: self.models,
                       selected: self.selectedModel)
@@ -53,16 +69,24 @@ class AccommodationViewModel {
     
     // MARK: - Private Methods
     private func fetch() -> Observable<[AccommodationModel]> {
+        self.isLoading = true
+        print("## Accommodation Fetching Parse Object")
+        
         return Observable.create { emitter in
-            ParseService.shared.fetchObjects { (result: Result<[AccommodationModel], Error>
-) in
+            
+            ParseService.shared.fetchObjects(startIndex: self.startIndex,
+                                             count: self.fetchingCount) { (result: Result<[AccommodationModel], Error>) in
                 switch result {
-                case .success(let dtos):
-                    emitter.onNext(dtos)
-
+                case .success(let models):
+                    emitter.onNext(models)
+                    print("### Fetching Data Count: \(models.count)")
+                    
                 case .failure(let error):
+                    print("### Fetching Data Error: \(error.localizedDescription)")
                     emitter.onError(error)
                 }
+                
+                self.isLoading = false
             }
 
             return Disposables.create()

@@ -25,10 +25,18 @@ class ParseService {
     }
     
     // MARK: - Methods
-    func fetchObjects<T>(completion: @escaping (Result<[T], Error>) -> Void) where T: PFObject {
+    /**
+     Parse 서버에서 Generic<T>로 설정된 타입의 데이터를 가져온다
+     - Parameters:
+        - startIndex: 데이터를 가져올 인덱스의 시작 순서
+        - count: 가져올 데이터의 개수
+        - completion: Result<[T], Error>
+     */
+    func fetchObjects<T>(startIndex: Int = 0, count: Int = 10, completion: @escaping (Result<[T], Error>) -> Void) where T: PFObject {
         let query = T.query()
         
-        query?.limit = 10
+        query?.skip = startIndex
+        query?.limit = count
         query?.findObjectsInBackground { (objects, error) in
             if let error = error {
                 completion(.failure(error))

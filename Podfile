@@ -11,15 +11,19 @@ target 'HalalKorea' do
   pod 'RxGesture'
   pod 'RxViewController'
   pod 'RxDataSources'
-  pod 'Alamofire'
-  pod 'Kingfisher'
-  pod 'FSPagerView'
-  pod 'SnapKit'
-  pod 'Then'
   pod 'SwiftGen', '~> 6.0'
   
-  # Parse
+  # Network
+  pod 'Alamofire'
+  pod 'Kingfisher'
   pod 'Parse'
+  
+  # Layout
+  pod 'SnapKit'
+  pod 'Then'
+  
+  # UI
+  pod 'ReadMoreTextView'
 
   target 'HalalKoreaTests' do
     inherit! :search_paths

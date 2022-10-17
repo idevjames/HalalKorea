@@ -18,6 +18,7 @@ class AccommodationViewController: UIViewController {
     // MARK: - Variables
     private let viewModel: AccommodationViewModel
     private let disposeBag = DisposeBag()
+    private var loadMore = PublishSubject<Bool>()
     
     // MARK: - UI Components
     private lazy var listTableView = UITableView().then {
@@ -49,14 +50,19 @@ class AccommodationViewController: UIViewController {
     }
     
     private func bindUI() {
-        
+        listTableView.rx.contentOffset.asDriver()
+            .map { _ in self.requestLoadMore() }
+            .distinctUntilChanged()
+            .drive(loadMore)
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModel() {
         let output = viewModel.transform(
             AccommodationViewModel.Input(
                 didLoad: self.rx.viewDidAppear.take(1).mapToVoid(),
-                itemSelected: listTableView.rx.itemSelected
+                itemSelected: listTableView.rx.itemSelected,
+                loadMore: self.loadMore
             )
         )
                 
@@ -77,7 +83,15 @@ class AccommodationViewController: UIViewController {
                 self?.navigationController?.pushViewController($0, animated: true)
             })
             .disposed(by: disposeBag)
-            
+    }
+    
+    // MARK: - Private Methods
+    private func requestLoadMore() -> Bool {
+        guard listTableView.contentSize.height > listTableView.frame.height else { return false }
+
+        let contentHeight = listTableView.contentSize.height - listTableView.frame.height
+
+        return listTableView.contentOffset.y >= contentHeight
     }
 }
 

@@ -9,6 +9,7 @@ import UIKit
 
 import SnapKit
 import Then
+import ReadMoreTextView
 
 class DetailContentView: UIView {
     // MARK: - UI Components
@@ -39,6 +40,14 @@ class DetailContentView: UIView {
         $0.text = content.content.withoutHtml()
         $0.maximumNumberOfLines = 4
         $0.shouldTrim = true
+        
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 13),
+            .foregroundColor: UIColor.blue
+        ]
+        
+        $0.attributedReadMoreText = .init(string: "... more", attributes: attrs)
+        $0.attributedReadLessText = .init(string: "less", attributes: attrs)
     }
     
     // MARK: - Variables
@@ -73,7 +82,7 @@ class DetailContentView: UIView {
             .font: UIFont.systemFont(ofSize: 13),
             .foregroundColor: UIColor.blue
         ]
-        
+
         let readMoreText = NSAttributedString(string: "more", attributes: attributes)
         let lessText = NSAttributedString(string: "less", attributes: attributes)
 
