@@ -26,6 +26,7 @@ class AccommodationViewController: UIViewController {
         $0.estimatedRowHeight = 230
         $0.rowHeight = UITableView.automaticDimension
         $0.separatorStyle = .none
+        $0.showsVerticalScrollIndicator = false
     }
     
     // MARK: - Initialize

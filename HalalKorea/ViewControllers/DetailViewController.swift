@@ -26,9 +26,17 @@ class DetailViewController: UIViewController {
     private lazy var scrollView = UIScrollView().then {
         $0.isScrollEnabled = true
         $0.isUserInteractionEnabled = true
+        $0.showsVerticalScrollIndicator = false
     }
     
-    private lazy var containerView = UIView().then {
+    private lazy var containerStackView = UIStackView().then {
+        $0.axis = .vertical
+        $0.distribution = .fill
+        $0.alignment = .fill
+        $0.spacing = 10
+    }
+    
+    private lazy var mainImageContainerView = UIView().then {
         $0.backgroundColor = .white
     }
     
@@ -119,9 +127,18 @@ class DetailViewController: UIViewController {
         )
         
         output.accommodationModel
+            .filter { $0.objectId != nil }
             .asDriverComplete()
             .drive(onNext: { [weak self] in
                 self?.configureAccommodation(model: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        output.lunchBoxModel
+            .filter { $0.objectId != nil }
+            .asDriverComplete()
+            .drive(onNext: { [weak self] in
+                self?.configureLunchBox(model: $0)
             })
             .disposed(by: disposeBag)
     }
@@ -136,6 +153,22 @@ class DetailViewController: UIViewController {
         model.contents.forEach {
             contentStackView.addArrangedSubview(DetailContentView(content: $0))
         }
+        
+        snsStackView.isHidden = false
+    }
+    
+    private func configureLunchBox(model: LunchBoxModel) {
+        if let imageURL = model.mainImage {
+            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
+        }
+        
+        descriptionLabel.text = model.lunchName
+        
+        model.contents.forEach {
+            contentStackView.addArrangedSubview(DetailContentView(content: $0))
+        }
+
+        snsStackView.isHidden = true
     }
 }
 
@@ -146,11 +179,13 @@ extension DetailViewController {
         navigationItem.title = "Details"
         
         view.addSubview(scrollView)
-        scrollView.addSubview(containerView)
-        containerView.addSubview(mainImageView)
-        containerView.addSubview(descriptionLabel)
+        scrollView.addSubview(containerStackView)
         
-        containerView.addSubview(snsStackView)
+        containerStackView.addArrangedSubview(mainImageContainerView)
+        mainImageContainerView.addSubview(mainImageView)
+        mainImageContainerView.addSubview(descriptionLabel)
+        
+        containerStackView.addArrangedSubview(snsStackView)
         snsStackView.addArrangedSubview(UIView())
         snsStackView.addArrangedSubview(youtubeImageView)
         snsStackView.addArrangedSubview(UIView())
@@ -159,47 +194,40 @@ extension DetailViewController {
         snsStackView.addArrangedSubview(naverImageView)
         snsStackView.addArrangedSubview(UIView())
         
-        containerView.addSubview(contentStackView)
-        containerView.addSubview(directionButton)
+        containerStackView.addArrangedSubview(contentStackView)
+        view.addSubview(directionButton)
     }
     
     private func setLayouts() {
         scrollView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
         }
         
-        containerView.snp.makeConstraints { make in
+        containerStackView.snp.makeConstraints { make in
             make.top.bottom.equalTo(scrollView)
             make.left.right.equalTo(view)
             make.width.equalTo(scrollView.snp.width)
         }
         
         mainImageView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(200)
         }
         
         descriptionLabel.snp.makeConstraints { make in
             make.height.equalTo(descriptionLabelHeight)
             make.leading.equalToSuperview()
-            make.trailing.equalToSuperview().inset(30)
             make.bottom.equalTo(mainImageView.snp.bottom).inset(30)
+            make.trailing.equalToSuperview().inset(30)
         }
         
         snsStackView.snp.makeConstraints { make in
-            make.top.equalTo(mainImageView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
             make.height.equalTo(35)
         }
         
-        contentStackView.snp.makeConstraints { make in
-            make.top.equalTo(snsStackView.snp.bottom).offset(10)
-            make.leading.trailing.equalToSuperview()
-        }
-        
         directionButton.snp.makeConstraints { make in
-            make.top.equalTo(contentStackView.snp.bottom).offset(5)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(scrollView.snp.bottom).offset(10)
+            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(50)
         }
     }

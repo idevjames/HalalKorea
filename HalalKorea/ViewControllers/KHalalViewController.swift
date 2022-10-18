@@ -17,6 +17,9 @@ class KHalalViewController: UIViewController {
     private let viewModel: KHalalViewModel
     private let disposeBag = DisposeBag()
     
+    // MARK: - UI Components
+    private lazy var navigationView = CustomNavigationTitleView()
+    
     // MARK: - Initialize
     init(viewModel: KHalalViewModel) {
         self.viewModel = viewModel
@@ -32,5 +35,31 @@ class KHalalViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setupUI()
+        setLayouts()
+        bindUI()
+        bindViewModel()
+    }
+    
+    private func bindUI() {
+        
+    }
+    
+    private func bindViewModel() {
+        
+    }
+}
+
+// MARK: - UI & Layouts
+extension KHalalViewController {
+    private func setupUI() {
+        view.backgroundColor = .white
+        navigationItem.titleView = navigationView
+    }
+    
+    private func setLayouts() {
+        navigationView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
     }
 }

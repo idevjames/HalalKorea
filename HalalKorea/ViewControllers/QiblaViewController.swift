@@ -17,6 +17,9 @@ class QiblaViewController: UIViewController {
     private let viewModel: QiblaViewModel
     private let disposeBag = DisposeBag()
     
+    // MARK: - UI Components
+    private lazy var navigationView = CustomNavigationTitleView()
+    
     // MARK: - Initialize
     init(viewModel: QiblaViewModel) {
         self.viewModel = viewModel
@@ -31,6 +34,32 @@ class QiblaViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
+        setupUI()
+        setLayouts()
+        bindUI()
+        bindViewModel()
+    }
+    
+    private func bindUI() {
         
+    }
+    
+    private func bindViewModel() {
+        
+    }
+}
+
+// MARK: - UI & Layouts
+extension QiblaViewController {
+    private func setupUI() {
+        view.backgroundColor = .white
+        navigationItem.titleView = navigationView
+    }
+    
+    private func setLayouts() {
+        navigationView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
     }
 }

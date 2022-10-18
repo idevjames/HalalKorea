@@ -46,8 +46,8 @@ class DetailContentView: UIView {
             .foregroundColor: UIColor.blue
         ]
         
-        $0.attributedReadMoreText = .init(string: "... more", attributes: attrs)
-        $0.attributedReadLessText = .init(string: "less", attributes: attrs)
+        $0.attributedReadMoreText = .init(string: "... read all", attributes: attrs)
+//        $0.attributedReadLessText = .init(string: "less", attributes: attrs)
     }
     
     // MARK: - Variables
@@ -76,18 +76,6 @@ class DetailContentView: UIView {
         
         // 이미지 사이즈 조절
         imageView.image = imageView.image?.aspectFitImage(inRect: .init(x: 0, y: 0, width: 30, height: 30))
-        
-        // 더보기, 줄이기 글자 설정
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 13),
-            .foregroundColor: UIColor.blue
-        ]
-
-        let readMoreText = NSAttributedString(string: "more", attributes: attributes)
-        let lessText = NSAttributedString(string: "less", attributes: attributes)
-
-        contentView.attributedReadMoreText = readMoreText
-        contentView.attributedReadLessText = lessText
     }
     
     private func setLayouts() {

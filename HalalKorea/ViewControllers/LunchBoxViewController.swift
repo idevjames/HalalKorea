@@ -21,11 +21,13 @@ class LunchBoxViewController: UIViewController {
     private var loadMore = PublishSubject<Bool>()
     
     // MARK: - UI Components
+    private lazy var navigationView = CustomNavigationTitleView()
     private lazy var listTableView = UITableView().then {
         $0.register(ListCell.self, forCellReuseIdentifier: ListCell.identifier)
         $0.estimatedRowHeight = 230
         $0.rowHeight = UITableView.automaticDimension
         $0.separatorStyle = .none
+        $0.showsVerticalScrollIndicator = false
     }
     
     // MARK: - Initialize
@@ -99,11 +101,16 @@ class LunchBoxViewController: UIViewController {
 extension LunchBoxViewController {
     private func setupUI() {
         view.backgroundColor = .white
+        navigationItem.titleView = navigationView
         
         view.addSubview(listTableView)
     }
     
     private func setLayouts() {
+        navigationView.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
         listTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

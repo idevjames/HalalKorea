@@ -74,7 +74,7 @@ class LunchBoxModel: PFObject, PFSubclassing {
         
         contents.append(
             DetailContent(
-                image: Asset.Images.visibleOn.image,
+                image: Asset.Images.visibleOn.image.withTintColor(.black),
                 title: "Category",
                 content: category
             )

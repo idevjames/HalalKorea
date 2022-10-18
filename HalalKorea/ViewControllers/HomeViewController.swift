@@ -118,7 +118,7 @@ class HomeViewController: UIViewController {
     }
         
     private func bindViewModel() {
-        let output = viewModel.transform(HomeViewModel.Input())
+//        let output = viewModel.transform(HomeViewModel.Input())
     }
     
     private func moveToChild(tag: Int) {
@@ -140,6 +140,11 @@ class HomeViewController: UIViewController {
             break
         }
         
+        moveToAccommodationViewController()
+    }
+    
+    // MARK: - Routings
+    private func moveToAccommodationViewController() {
         let accommodationViewController = AccommodationViewController(viewModel: AccommodationViewModel())
         self.navigationController?.pushViewController(accommodationViewController, animated: true)
     }

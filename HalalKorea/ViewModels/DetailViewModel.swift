@@ -16,7 +16,8 @@ class DetailViewModel {
     }
     
     struct Output {
-        let accommodationModel = BehaviorSubject<AccommodationModel>(value: .init())
+        let accommodationModel = BehaviorRelay<AccommodationModel>(value: .init())
+        let lunchBoxModel = BehaviorRelay<LunchBoxModel>(value: .init())
     }
     
     // MARK: - Variables
@@ -29,11 +30,13 @@ class DetailViewModel {
         
         input.model
             .subscribe { model in
-                guard let model = model as? AccommodationModel else { return }
-                
-                output.accommodationModel.onNext(model)
+                if let model = model as? AccommodationModel {
+                    output.accommodationModel.accept(model)
+                } else if let model = model as? LunchBoxModel {
+                    output.lunchBoxModel.accept(model)
+                }
             } onError: { error in
-                output.accommodationModel.onError(error)
+                print(error.localizedDescription)
             }
             .disposed(by: disposeBag)
 

@@ -161,7 +161,7 @@ class AccommodationModel: PFObject, PFSubclassing {
         
         contents.append(
             DetailContent(
-                image: Asset.Images.icDet5.image,
+                image: Asset.Images.icDet5.image.withTintColor(.systemIndigo),
                 title: "More information",
                 content: overview
             )
