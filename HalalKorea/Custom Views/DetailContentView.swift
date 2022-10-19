@@ -47,7 +47,7 @@ class DetailContentView: UIView {
         ]
         
         $0.attributedReadMoreText = .init(string: "... read all", attributes: attrs)
-//        $0.attributedReadLessText = .init(string: "less", attributes: attrs)
+        $0.attributedReadLessText = .init(string: "less", attributes: attrs)
     }
     
     // MARK: - Variables

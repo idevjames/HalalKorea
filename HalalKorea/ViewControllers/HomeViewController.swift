@@ -124,26 +124,68 @@ class HomeViewController: UIViewController {
     private func moveToChild(tag: Int) {
         
         switch tag {
-        case 0:
-            print("tag 0")
+        case 0: // prayer time
+            moveToPrayerTime()
             
-        case 1:
-            print("tag 1")
+        case 1: // lunchBox
+            moveToLunchBox()
             
-        case 2:
-            print("tag 2")
+        case 2: // miceTour
+            moveToMiceTour()
             
-        case 3:
-            print("tag 3")
+        case 3: // metaverse
+            moveToMetaverse("https://naver.com")
+            
+        case 4: // store
+            moveToStore()
+            
+        case 5: // accommodation
+            moveToAccommodationViewController()
             
         default:
             break
         }
-        
-        moveToAccommodationViewController()
     }
     
     // MARK: - Routings
+    private func moveToPrayerTime() {
+        guard let navigations = tabBarController?.viewControllers as? [UINavigationController] else { return }
+        
+        for (index, navigation) in navigations.enumerated() {
+            if let viewController = navigation.viewControllers.first {
+                if viewController is QiblaViewController {
+                    tabBarController?.selectedIndex = index
+                }
+            }
+        }
+    }
+    
+    private func moveToLunchBox() {
+        guard let navigations = tabBarController?.viewControllers as? [UINavigationController] else { return }
+        
+        for (index, navigation) in navigations.enumerated() {
+            if let viewController = navigation.viewControllers.first {
+                if viewController is LunchBoxViewController {
+                    tabBarController?.selectedIndex = index
+                }
+            }
+        }
+    }
+    
+    private func moveToMiceTour() {
+        
+    }
+    
+    private func moveToMetaverse(_ urlString: String) {
+        if let url = URL(string: urlString) {
+            UIApplication.shared.open(url, options: [:])
+        }
+    }
+    
+    private func moveToStore() {
+        
+    }
+    
     private func moveToAccommodationViewController() {
         let accommodationViewController = AccommodationViewController(viewModel: AccommodationViewModel())
         self.navigationController?.pushViewController(accommodationViewController, animated: true)

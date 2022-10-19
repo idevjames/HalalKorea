@@ -17,6 +17,7 @@ target 'HalalKorea' do
   pod 'Alamofire'
   pod 'Kingfisher'
   pod 'Parse'
+  pod 'Adhan'
   
   # Layout
   pod 'SnapKit'

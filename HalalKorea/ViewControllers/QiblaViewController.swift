@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 import RxGesture
 import RxViewController
+import Adhan
 
 class QiblaViewController: UIViewController {
     // MARK: - Variables
@@ -42,11 +43,55 @@ class QiblaViewController: UIViewController {
     }
     
     private func bindUI() {
+        print("========== dubai params")
+        print(getQiblaTime(.dubai))
+        print()
         
+        print("========== other params")
+        print(getQiblaTime(.other))
+        print()
+        
+        print("========== egyptian params")
+        print(getQiblaTime(.egyptian))
+        print()
+        
+        print("========== karachi params")
+        print(getQiblaTime(.karachi))
+        print()
+        
+        print("========== moonsightingcommitte params")
+        print(getQiblaTime(.moonsightingCommittee))
+        print()
+        
+        print("========== global league params")
+        print(getQiblaTime(.muslimWorldLeague))
+        print()
     }
     
     private func bindViewModel() {
         
+    }
+    
+    private func getQiblaTime(_ params: CalculationMethod) {
+        let coordinates = Coordinates(latitude: 51.508515, longitude: -0.1254872)
+        let cal = Calendar(identifier: .gregorian)
+        let date = cal.dateComponents([.year, .month, .day], from: Date())
+        let prayers = PrayerTimes(coordinates: coordinates,
+                                  date: date,
+                                  calculationParameters: params.params)
+        
+        if let prayers = prayers {
+            let formatter = DateFormatter()
+            formatter.timeStyle = .full
+            formatter.timeZone = TimeZone(identifier: "KST")
+            
+            print("fajr \(formatter.string(from: prayers.fajr))")
+            print("sunrise \(formatter.string(from: prayers.sunrise))")
+            print("dhuhr \(formatter.string(from: prayers.dhuhr))")
+            print("asr \(formatter.string(from: prayers.asr))")
+            print("maghrib \(formatter.string(from: prayers.maghrib))")
+            print("isha \(formatter.string(from: prayers.isha))")
+        }
     }
 }
 
