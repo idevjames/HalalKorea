@@ -118,6 +118,8 @@ class ListCell: UITableViewCell {
             makeAccommodation(model)
         } else if let model = model as? LunchBoxModel {
             makeLunchBox(model)
+        } else if let model = model as? StoreModel {
+            makeStore(model)
         }
     }
     
@@ -150,6 +152,23 @@ class ListCell: UITableViewCell {
             make.height.equalTo(10)
         }
     }
+    
+    private func makeStore(_ model: StoreModel) {
+        if let imageURL = model.mainImage {
+            mainImageView.kf.setImage(with: imageURL,
+                                      placeholder: Asset.Images.imgNo.image)
+        }
+        
+        descriptionLabel.text = model.name
+        iconStackView.isHidden = true
+        
+        let spacingView = UIView()
+        containerStackView.addArrangedSubview(spacingView)
+        
+        spacingView.snp.makeConstraints { make in
+            make.height.equalTo(10)
+        }
+    }
 }
 
 extension ListCell {
@@ -172,6 +191,12 @@ extension ListCell {
         iconStackView.addArrangedSubview(naverImageView)
         iconStackView.addArrangedSubview(UIView())
         iconStackView.addArrangedSubview(certLabel)
+        
+        layer.shadowRadius = 3
+        layer.shadowOpacity = 0.1
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+        layer.masksToBounds = false
     }
     
     private func setLayotus() {

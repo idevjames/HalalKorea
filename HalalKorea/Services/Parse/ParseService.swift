@@ -22,6 +22,8 @@ class ParseService {
         
         // SubClassing 등록
         AccommodationModel.registerSubclass()
+        CompanyIntroduceModel.registerSubclass()
+        LunchBoxModel.registerSubclass()
     }
     
     // MARK: - Methods
@@ -30,13 +32,24 @@ class ParseService {
      - Parameters:
         - startIndex: 데이터를 가져올 인덱스의 시작 순서
         - count: 가져올 데이터의 개수
+        - compareColumn : 데이터를 비교할 column name
+        - compareValue : 비교할 데이터
         - completion: Result<[T], Error>
      */
-    func fetchObjects<T>(startIndex: Int = 0, count: Int = 10, completion: @escaping (Result<[T], Error>) -> Void) where T: PFObject {
+    func fetchObjects<T: PFObject>(startIndex: Int = 0,
+                                   count: Int = 10,
+                                   compareColumn: String? = nil,
+                                   compareValue: String? = nil,
+                                   completion: @escaping (Result<[T], Error>) -> Void) {
         let query = T.query()
         
         query?.skip = startIndex
         query?.limit = count
+        
+        if let compareColumn = compareColumn, let compareValue = compareValue {
+            query?.whereKey(compareColumn, equalTo: compareValue)
+        }
+
         query?.findObjectsInBackground { (objects, error) in
             if let error = error {
                 completion(.failure(error))

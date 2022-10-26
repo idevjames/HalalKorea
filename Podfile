@@ -16,7 +16,7 @@ target 'HalalKorea' do
   # Network
   pod 'Alamofire'
   pod 'Kingfisher'
-  pod 'Parse'
+  pod 'Parse', :inhibit_warnings => true
   pod 'Adhan'
   
   # Layout

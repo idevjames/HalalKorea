@@ -124,22 +124,22 @@ class HomeViewController: UIViewController {
     private func moveToChild(tag: Int) {
         
         switch tag {
-        case 0: // prayer time
+        case 111: // prayer time
             moveToPrayerTime()
             
-        case 1: // lunchBox
+        case 222: // lunchBox
             moveToLunchBox()
             
-        case 2: // miceTour
+        case 333: // miceTour
             moveToMiceTour()
             
-        case 3: // metaverse
+        case 444: // metaverse
             moveToMetaverse("https://naver.com")
             
-        case 4: // store
+        case 555: // store
             moveToStore()
             
-        case 5: // accommodation
+        case 666: // accommodation
             moveToAccommodationViewController()
             
         default:
@@ -183,7 +183,8 @@ class HomeViewController: UIViewController {
     }
     
     private func moveToStore() {
-        
+        let storeViewController = StoreViewController()
+        self.navigationController?.pushViewController(storeViewController, animated: true)
     }
     
     private func moveToAccommodationViewController() {
@@ -197,12 +198,12 @@ extension HomeViewController {
     private func setupUI() {
         view.backgroundColor = .white
         
-        prayerTimeButton.tag = 0
-        lunchBoxButton.tag = 1
-        miceTourButton.tag = 2
-        metaverseButton.tag = 3
-        storeButton.tag = 4
-        accommodationButton.tag = 5
+        prayerTimeButton.tag = 111
+        lunchBoxButton.tag = 222
+        miceTourButton.tag = 333
+        metaverseButton.tag = 444
+        storeButton.tag = 555
+        accommodationButton.tag = 666
         
         navigationItem.titleView = navigationView
         
