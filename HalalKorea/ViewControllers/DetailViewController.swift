@@ -141,6 +141,14 @@ class DetailViewController: UIViewController {
                 self?.configureLunchBox(model: $0)
             })
             .disposed(by: disposeBag)
+        
+        output.storeModel
+            .filter { $0.objectId != nil }
+            .asDriverComplete()
+            .drive(onNext: { [weak self] in
+                self?.configureStore(model: $0)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func configureAccommodation(model: AccommodationModel) {
@@ -168,6 +176,20 @@ class DetailViewController: UIViewController {
             contentStackView.addArrangedSubview(DetailContentView(content: $0))
         }
 
+        snsStackView.isHidden = true
+    }
+    
+    private func configureStore(model: StoreModel) {
+        if let imageURL = model.mainImage {
+            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
+        }
+        
+        descriptionLabel.text = model.name
+        
+        model.contents.forEach {
+            contentStackView.addArrangedSubview(DetailContentView(content: $0))
+        }
+        
         snsStackView.isHidden = true
     }
 }

@@ -18,6 +18,7 @@ class DetailViewModel {
     struct Output {
         let accommodationModel = BehaviorRelay<AccommodationModel>(value: .init())
         let lunchBoxModel = BehaviorRelay<LunchBoxModel>(value: .init())
+        let storeModel = BehaviorRelay<StoreModel>(value: .init())
     }
     
     // MARK: - Variables
@@ -34,6 +35,8 @@ class DetailViewModel {
                     output.accommodationModel.accept(model)
                 } else if let model = model as? LunchBoxModel {
                     output.lunchBoxModel.accept(model)
+                } else if let model = model as? StoreModel {
+                    output.storeModel.accept(model)
                 }
             } onError: { error in
                 print(error.localizedDescription)

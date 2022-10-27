@@ -126,8 +126,7 @@ class ListCell: UITableViewCell {
     // MARK: - Private Methods
     private func makeAccommodation(_ model: AccommodationModel) {
         if let imageURL = model.mainImage {
-            mainImageView.kf.setImage(with: imageURL,
-                                      placeholder: Asset.Images.imgNo.image)
+            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
         }
         
         descriptionLabel.text = model.title
@@ -137,8 +136,7 @@ class ListCell: UITableViewCell {
     
     private func makeLunchBox(_ model: LunchBoxModel) {
         if let imageURL = model.mainImage {
-            mainImageView.kf.setImage(with: imageURL,
-                                      placeholder: Asset.Images.imgNo.image)
+            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
         }
         
         descriptionLabel.text = model.lunchName
@@ -155,8 +153,7 @@ class ListCell: UITableViewCell {
     
     private func makeStore(_ model: StoreModel) {
         if let imageURL = model.mainImage {
-            mainImageView.kf.setImage(with: imageURL,
-                                      placeholder: Asset.Images.imgNo.image)
+            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
         }
         
         descriptionLabel.text = model.name

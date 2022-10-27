@@ -66,4 +66,50 @@ class StoreModel: PFObject, PFSubclassing {
         
         return nil
     }
+    
+    var contents: [DetailContent] {
+        var contents = [DetailContent]()
+        
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icShopGuide.image,
+                title: "Manufacturer",
+                content: manufacturer
+            )
+        )
+        
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icDet8.image,
+                title: "Contact",
+                content: contact
+            )
+        )
+        
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icDet4.image,
+                title: "Price",
+                content: price
+            )
+        )
+        
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icDet88.image,
+                title: "Homepage",
+                content: homepage
+            )
+        )
+        
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icDet5.image.withTintColor(.systemIndigo),
+                title: "Detail",
+                content: detail
+            )
+        )
+        
+        return contents
+    }
 }

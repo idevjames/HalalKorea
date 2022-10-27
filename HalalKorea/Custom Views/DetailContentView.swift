@@ -39,15 +39,7 @@ class DetailContentView: UIView {
     private lazy var contentView = ReadMoreTextView().then {
         $0.text = content.content.withoutHtml()
         $0.maximumNumberOfLines = 4
-        $0.shouldTrim = true
-        
-        let attrs: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 13),
-            .foregroundColor: UIColor.blue
-        ]
-        
-        $0.attributedReadMoreText = .init(string: "... read all", attributes: attrs)
-        $0.attributedReadLessText = .init(string: "less", attributes: attrs)
+        $0.shouldTrim = false
     }
     
     // MARK: - Variables
@@ -80,12 +72,24 @@ class DetailContentView: UIView {
     
     private func setLayouts() {
         hStackView.snp.makeConstraints { make in
-            make.top.trailing.bottom.equalToSuperview()
-            make.leading.equalToSuperview().offset(10)
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview().offset(10)
         }
         
         imageView.snp.makeConstraints { make in
             make.width.equalTo(30)
         }
+    }
+    
+    private func changeExpandableContentView() {
+        
+        let attrs: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 13),
+            .foregroundColor: UIColor.blue
+        ]
+        
+        contentView.attributedReadMoreText = .init(string: "... read all", attributes: attrs)
+        contentView.attributedReadLessText = .init(string: "less", attributes: attrs)
+        contentView.shouldTrim = false
     }
 }
