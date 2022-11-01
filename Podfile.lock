@@ -28,6 +28,7 @@ PODS:
   - SnapKit (5.6.0)
   - SwiftGen (6.6.2)
   - Then (3.0.0)
+  - ViewPager-Swift (2.0.2)
 
 DEPENDENCIES:
   - Adhan
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - SnapKit
   - SwiftGen (~> 6.0)
   - Then
+  - ViewPager-Swift
 
 SPEC REPOS:
   trunk:
@@ -62,6 +64,7 @@ SPEC REPOS:
     - SnapKit
     - SwiftGen
     - Then
+    - ViewPager-Swift
 
 SPEC CHECKSUMS:
   Adhan: a14251a1dc1aa9cb9097db183cefbbdd8b736ea2
@@ -80,7 +83,8 @@ SPEC CHECKSUMS:
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
   SwiftGen: 1366a7f71aeef49954ca5a63ba4bef6b0f24138c
   Then: 844265ae87834bbe1147d91d5d41a404da2ec27d
+  ViewPager-Swift: 92fa2a54d56998c85526eaaafc4b7b3f4830ca36
 
-PODFILE CHECKSUM: ace0323cd995d1df4bec31de646893f70007e88e
+PODFILE CHECKSUM: b36621b32f2b4bea4f3ccff482f988cd8287b143
 
 COCOAPODS: 1.11.3

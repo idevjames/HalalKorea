@@ -57,12 +57,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         homeNavigation.setViewControllers([homeViewController], animated: false)
         homeNavigation.tabBarItem = .init(title: "Home", image: nil, tag: 0)
         
-        let kHalalViewModel = KHalalViewModel()
-        let kHalalViewController = KHalalViewController(viewModel: kHalalViewModel)
-        let kHalalNavigation = UINavigationController()
-        kHalalNavigation.setViewControllers([kHalalViewController], animated: false)
-        kHalalNavigation.tabBarItem = .init(title: "K-Halal", image: nil, tag: 1)
-        
         let qiblaViewModel = QiblaViewModel()
         let qiblaViewController = QiblaViewController(viewModel: qiblaViewModel)
         let qiblaNavigation = UINavigationController()
@@ -76,7 +70,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         lunchBoxNavigation.tabBarItem = .init(title: "Lunch", image: nil, tag: 3)
         
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [homeNavigation, kHalalNavigation, qiblaNavigation, lunchBoxNavigation]
+        tabBarController.viewControllers = [homeNavigation, qiblaNavigation, lunchBoxNavigation]
         
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()

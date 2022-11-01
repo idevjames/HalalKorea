@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A150ABD29112FC9000FFD11 /* MiceTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A150ABC29112FC9000FFD11 /* MiceTourViewController.swift */; };
+		1A150ACC291167D5000FFD11 /* MiceTourModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A150ACB291167D5000FFD11 /* MiceTourModel.swift */; };
+		1A150AD029116967000FFD11 /* MiceTourListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A150ACF29116967000FFD11 /* MiceTourListViewController.swift */; };
+		1A150AD22911698C000FFD11 /* MiceTourListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A150AD12911698C000FFD11 /* MiceTourListViewModel.swift */; };
 		1A22CD4628A261C9005F4BC6 /* RxViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CD4528A261C9005F4BC6 /* RxViewController+Extension.swift */; };
 		1A22CD4828A262A0005F4BC6 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A22CD4728A262A0005F4BC6 /* ObservableType+Extension.swift */; };
 		1A47972928F32E3900CD00A3 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A47972828F32E3900CD00A3 /* UIImage+Extension.swift */; };
@@ -36,10 +40,8 @@
 		1A6CFF5528800B3E00AC8F39 /* ParseConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CFF5428800B3E00AC8F39 /* ParseConst.swift */; };
 		1A87449E2900394F00AF25CE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87449D2900394F00AF25CE /* LocationManager.swift */; };
 		1AE2D4CB28E2E876002A7F32 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AE2D4CA28E2E876002A7F32 /* Launch Screen.storyboard */; };
-		1AE2D4E328E312D3002A7F32 /* KHalalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4E228E312D3002A7F32 /* KHalalViewModel.swift */; };
 		1AE2D4E528E312D9002A7F32 /* QiblaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4E428E312D9002A7F32 /* QiblaViewModel.swift */; };
 		1AE2D4E728E312E1002A7F32 /* LunchBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4E628E312E1002A7F32 /* LunchBoxViewModel.swift */; };
-		1AFBD5A9289D212800708661 /* KHalalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFBD5A8289D212800708661 /* KHalalViewController.swift */; };
 		1AFBD5AB289D214900708661 /* QiblaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFBD5AA289D214900708661 /* QiblaViewController.swift */; };
 		1AFBD5AD289D215600708661 /* LunchBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFBD5AC289D215600708661 /* LunchBoxViewController.swift */; };
 		1AFBD5B8289D2F4100708661 /* UIColor+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFBD5B7289D2F4100708661 /* UIColor+Extention.swift */; };
@@ -77,6 +79,10 @@
 
 /* Begin PBXFileReference section */
 		1555938E01142A262DB5DBBB /* Pods-HalalKoreaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HalalKoreaTests.release.xcconfig"; path = "Target Support Files/Pods-HalalKoreaTests/Pods-HalalKoreaTests.release.xcconfig"; sourceTree = "<group>"; };
+		1A150ABC29112FC9000FFD11 /* MiceTourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiceTourViewController.swift; sourceTree = "<group>"; };
+		1A150ACB291167D5000FFD11 /* MiceTourModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiceTourModel.swift; sourceTree = "<group>"; };
+		1A150ACF29116967000FFD11 /* MiceTourListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiceTourListViewController.swift; sourceTree = "<group>"; };
+		1A150AD12911698C000FFD11 /* MiceTourListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiceTourListViewModel.swift; sourceTree = "<group>"; };
 		1A22CD4528A261C9005F4BC6 /* RxViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxViewController+Extension.swift"; sourceTree = "<group>"; };
 		1A22CD4728A262A0005F4BC6 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
 		1A47972828F32E3900CD00A3 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
@@ -110,10 +116,8 @@
 		1A6CFF5428800B3E00AC8F39 /* ParseConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConst.swift; sourceTree = "<group>"; };
 		1A87449D2900394F00AF25CE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1AE2D4CA28E2E876002A7F32 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		1AE2D4E228E312D3002A7F32 /* KHalalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHalalViewModel.swift; sourceTree = "<group>"; };
 		1AE2D4E428E312D9002A7F32 /* QiblaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaViewModel.swift; sourceTree = "<group>"; };
 		1AE2D4E628E312E1002A7F32 /* LunchBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchBoxViewModel.swift; sourceTree = "<group>"; };
-		1AFBD5A8289D212800708661 /* KHalalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KHalalViewController.swift; sourceTree = "<group>"; };
 		1AFBD5AA289D214900708661 /* QiblaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaViewController.swift; sourceTree = "<group>"; };
 		1AFBD5AC289D215600708661 /* LunchBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchBoxViewController.swift; sourceTree = "<group>"; };
 		1AFBD5B7289D2F4100708661 /* UIColor+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extention.swift"; sourceTree = "<group>"; };
@@ -165,6 +169,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A150ABE29113000000FFD11 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				1A6CFF14287FF3A500AC8F39 /* HomeViewController.swift */,
+				B1E5448B28EFDB7600846DD7 /* AccommodationViewController.swift */,
+				B1F42C0B2908B9BF007EA273 /* StoreViewController.swift */,
+				B1F42C13290907CD007EA273 /* StoreListViewController.swift */,
+				1A150ABC29112FC9000FFD11 /* MiceTourViewController.swift */,
+				1A150ACF29116967000FFD11 /* MiceTourListViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		1A150ABF29113018000FFD11 /* Qibla */ = {
+			isa = PBXGroup;
+			children = (
+				1AFBD5AA289D214900708661 /* QiblaViewController.swift */,
+			);
+			path = Qibla;
+			sourceTree = "<group>";
+		};
+		1A150AC02911301E000FFD11 /* LunchBox */ = {
+			isa = PBXGroup;
+			children = (
+				1AFBD5AC289D215600708661 /* LunchBoxViewController.swift */,
+			);
+			path = LunchBox;
+			sourceTree = "<group>";
+		};
+		1A150AC129113029000FFD11 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				1A4D75A828F3F85C00C8C04C /* DetailViewController.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		1A4D75B428F5A9FD00C8C04C /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +221,7 @@
 				B177527A28FD2139007B3FE5 /* LunchBoxModel.swift */,
 				1A5DC7232882E800009CDEFD /* CompanyIntroduceModel.swift */,
 				B1F42C11290904E3007EA273 /* StoreModel.swift */,
+				1A150ACB291167D5000FFD11 /* MiceTourModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -282,14 +324,10 @@
 		1A6CFF46287FF84300AC8F39 /* VIewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				1A6CFF14287FF3A500AC8F39 /* HomeViewController.swift */,
-				1AFBD5A8289D212800708661 /* KHalalViewController.swift */,
-				1AFBD5AA289D214900708661 /* QiblaViewController.swift */,
-				1AFBD5AC289D215600708661 /* LunchBoxViewController.swift */,
-				B1E5448B28EFDB7600846DD7 /* AccommodationViewController.swift */,
-				1A4D75A828F3F85C00C8C04C /* DetailViewController.swift */,
-				B1F42C0B2908B9BF007EA273 /* StoreViewController.swift */,
-				B1F42C13290907CD007EA273 /* StoreListViewController.swift */,
+				1A150AC129113029000FFD11 /* Detail */,
+				1A150AC02911301E000FFD11 /* LunchBox */,
+				1A150ABF29113018000FFD11 /* Qibla */,
+				1A150ABE29113000000FFD11 /* Home */,
 			);
 			name = VIewControllers;
 			path = ViewControllers;
@@ -299,12 +337,12 @@
 			isa = PBXGroup;
 			children = (
 				1AFBD5C3289D8BDF00708661 /* HomeViewModel.swift */,
-				1AE2D4E228E312D3002A7F32 /* KHalalViewModel.swift */,
 				1AE2D4E428E312D9002A7F32 /* QiblaViewModel.swift */,
 				1AE2D4E628E312E1002A7F32 /* LunchBoxViewModel.swift */,
 				B1E5448D28EFDB8500846DD7 /* AccommodationViewModel.swift */,
 				1A4D75AA28F3F86200C8C04C /* DetailViewModel.swift */,
 				B1F42C15290907D6007EA273 /* StoreListViewModel.swift */,
+				1A150AD12911698C000FFD11 /* MiceTourListViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -635,19 +673,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1AFBD5A9289D212800708661 /* KHalalViewController.swift in Sources */,
 				1A4D75BC28F5B41300C8C04C /* String+Extension.swift in Sources */,
 				B1E5449328F0055300846DD7 /* CustomLabel.swift in Sources */,
 				1A66FF9F28EF11AD006506CD /* CustomNavigationView.swift in Sources */,
 				1A6CFF15287FF3A500AC8F39 /* HomeViewController.swift in Sources */,
 				1AFBD5C4289D8BDF00708661 /* HomeViewModel.swift in Sources */,
 				1A6CFF5528800B3E00AC8F39 /* ParseConst.swift in Sources */,
+				1A150AD22911698C000FFD11 /* MiceTourListViewModel.swift in Sources */,
 				1A5DC71F2882AC54009CDEFD /* AccommodationModel.swift in Sources */,
-				1AE2D4E328E312D3002A7F32 /* KHalalViewModel.swift in Sources */,
 				1AFBD5AB289D214900708661 /* QiblaViewController.swift in Sources */,
 				1A4D75A928F3F85C00C8C04C /* DetailViewController.swift in Sources */,
 				1A6CFF11287FF3A500AC8F39 /* AppDelegate.swift in Sources */,
 				1A22CD4828A262A0005F4BC6 /* ObservableType+Extension.swift in Sources */,
+				1A150ACC291167D5000FFD11 /* MiceTourModel.swift in Sources */,
+				1A150AD029116967000FFD11 /* MiceTourListViewController.swift in Sources */,
+				1A150ABD29112FC9000FFD11 /* MiceTourViewController.swift in Sources */,
 				1AE2D4E728E312E1002A7F32 /* LunchBoxViewModel.swift in Sources */,
 				1A5DE39F28EDD6440071A354 /* ImageButton.swift in Sources */,
 				1A47972928F32E3900CD00A3 /* UIImage+Extension.swift in Sources */,

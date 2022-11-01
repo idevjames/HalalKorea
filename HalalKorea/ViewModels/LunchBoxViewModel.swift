@@ -62,7 +62,8 @@ class LunchBoxViewModel {
     
     // MARK: - Private Methods
     private func fetch() -> Observable<[LunchBoxModel]> {
-        return Observable.create { emitter in
+        return Observable.create { [weak self] emitter in
+            guard let self = self else { return Disposables.create() }
             
             ParseService.shared.fetchObjects(startIndex: self.startIndex,
                                              count: self.fetchingCount) { (result: Result<[LunchBoxModel], Error>) in

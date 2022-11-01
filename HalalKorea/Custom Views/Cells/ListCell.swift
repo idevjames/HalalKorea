@@ -34,19 +34,16 @@ class ListCell: UITableViewCell {
         $0.contentMode = .scaleToFill
     }
     
-    private lazy var descriptionLabel = CustomLabel().then {
-        $0.text = ""
-        $0.numberOfLines = 0
-        $0.backgroundColor = Asset.Colors.primaryGreen.color.withAlphaComponent(0.7)
-        $0.textColor = .white
-        $0.font = .systemFont(ofSize: 13, weight: .medium)
-        $0.clipsToBounds = true
-        $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-        $0.layer.cornerRadius = descriptionLabelHeight / 2
-        $0.leftPadding = 20.0
-        $0.rightPadding = 10.0
+    private lazy var descriptionView = UIView().then {
+        $0.backgroundColor = .black.withAlphaComponent(0.5)
     }
     
+    private lazy var descriptionLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .medium)
+        $0.textColor = .white
+        $0.numberOfLines = 2
+    }
+        
     private lazy var iconStackView = UIStackView().then {
         $0.axis = .horizontal
         $0.alignment = .fill
@@ -60,6 +57,17 @@ class ListCell: UITableViewCell {
     }
     
     private lazy var distanceLabel = UILabel().then {
+        $0.text = ""
+        $0.font = .systemFont(ofSize: 11)
+        $0.textColor = .darkGray
+    }
+    
+    private lazy var locationImageView = UIImageView().then {
+        $0.image = Asset.Images.icDet6.image.withAlignmentRectInsets(UIEdgeInsets(top: -10, left: -5, bottom: -10, right: 0))
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var locationLabel = UILabel().then {
         $0.text = ""
         $0.font = .systemFont(ofSize: 11)
         $0.textColor = .darkGray
@@ -120,6 +128,8 @@ class ListCell: UITableViewCell {
             makeLunchBox(model)
         } else if let model = model as? StoreModel {
             makeStore(model)
+        } else if let model = model as? MiceTourModel {
+            makeMiceTour(model)
         }
     }
     
@@ -132,6 +142,8 @@ class ListCell: UITableViewCell {
         descriptionLabel.text = model.title
         distanceLabel.text = "19.492 km"
         certLabel.isHidden = model.invisible
+        locationImageView.isHidden = true
+        locationLabel.isHidden = true
     }
     
     private func makeLunchBox(_ model: LunchBoxModel) {
@@ -141,14 +153,6 @@ class ListCell: UITableViewCell {
         
         descriptionLabel.text = model.lunchName
         iconStackView.isHidden = true
-        
-        // cell spacing 처리
-        let spacingView = UIView()
-        containerStackView.addArrangedSubview(spacingView)
-        
-        spacingView.snp.makeConstraints { make in
-            make.height.equalTo(10)
-        }
     }
     
     private func makeStore(_ model: StoreModel) {
@@ -158,13 +162,21 @@ class ListCell: UITableViewCell {
         
         descriptionLabel.text = model.name
         iconStackView.isHidden = true
-        
-        let spacingView = UIView()
-        containerStackView.addArrangedSubview(spacingView)
-        
-        spacingView.snp.makeConstraints { make in
-            make.height.equalTo(10)
+    }
+    
+    private func makeMiceTour(_ model: MiceTourModel) {
+        if let imageURL = model.mainImage {
+            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
         }
+        
+        locationLabel.text = model.location
+        descriptionLabel.text = model.name
+        distanceImageView.isHidden = true
+        distanceLabel.isHidden = true
+        youtubeImageView.isHidden = true
+        instagramImageView.isHidden = true
+        naverImageView.isHidden = true
+        certLabel.isHidden = true
     }
 }
 
@@ -177,12 +189,15 @@ extension ListCell {
         containerStackView.addArrangedSubview(mainContentView)
         
         mainContentView.addSubview(mainImageView)
-        mainContentView.addSubview(descriptionLabel)
+        mainContentView.addSubview(descriptionView)
+        descriptionView.addSubview(descriptionLabel)
         
         containerStackView.addArrangedSubview(iconStackView)
         
         iconStackView.addArrangedSubview(distanceImageView)
         iconStackView.addArrangedSubview(distanceLabel)
+        iconStackView.addArrangedSubview(locationImageView)
+        iconStackView.addArrangedSubview(locationLabel)
         iconStackView.addArrangedSubview(youtubeImageView)
         iconStackView.addArrangedSubview(instagramImageView)
         iconStackView.addArrangedSubview(naverImageView)
@@ -206,11 +221,14 @@ extension ListCell {
             make.height.equalTo(200)
         }
         
-        descriptionLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview().inset(30)
-            make.bottom.equalTo(mainImageView.snp.bottom).inset(30)
+        descriptionView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(descriptionLabelHeight)
+        }
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.trailing.equalTo(10)
         }
         
         iconStackView.snp.makeConstraints { make in
@@ -222,6 +240,14 @@ extension ListCell {
         }
         
         distanceLabel.snp.makeConstraints { make in
+            make.width.equalTo(100)
+        }
+        
+        locationImageView.snp.makeConstraints { make in
+            make.width.equalTo(stackViewHeight)
+        }
+        
+        locationLabel.snp.makeConstraints { make in
             make.width.equalTo(100)
         }
         

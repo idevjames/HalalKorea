@@ -72,8 +72,9 @@ class StoreListViewModel {
         self.isLoading = true
         print("## Store Fetching Parse Object")
         
-        return Observable.create { emitter in
-            
+        return Observable.create { [weak self] emitter in
+            guard let self = self else { return Disposables.create() }
+
             ParseService.shared.fetchObjects(startIndex: self.startIndex,
                                              count: self.fetchingCount,
                                              compareColumn: "col_store_category",

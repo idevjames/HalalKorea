@@ -24,6 +24,7 @@ class ParseService {
         AccommodationModel.registerSubclass()
         CompanyIntroduceModel.registerSubclass()
         LunchBoxModel.registerSubclass()
+        MiceTourModel.registerSubclass()
     }
     
     // MARK: - Methods

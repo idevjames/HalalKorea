@@ -23,6 +23,13 @@ class DetailViewController: UIViewController {
     private let descriptionLabelHeight: CGFloat = 50.0
 
     // MARK: - UI Components
+    private lazy var mainStackview = UIStackView().then {
+        $0.axis = .vertical
+        $0.alignment = .fill
+        $0.distribution = .fill
+        $0.spacing = 10
+    }
+    
     private lazy var scrollView = UIScrollView().then {
         $0.isScrollEnabled = true
         $0.isUserInteractionEnabled = true
@@ -45,17 +52,14 @@ class DetailViewController: UIViewController {
         $0.contentMode = .scaleToFill
     }
     
-    private lazy var descriptionLabel = CustomLabel().then {
-        $0.text = ""
-        $0.numberOfLines = 0
-        $0.backgroundColor = Asset.Colors.primaryGreen.color.withAlphaComponent(0.7)
+    private lazy var descriptionView = UIView().then {
+        $0.backgroundColor = .black.withAlphaComponent(0.5)
+    }
+    
+    private lazy var descriptionLabel = UILabel().then {
+        $0.font = .systemFont(ofSize: 15, weight: .medium)
         $0.textColor = .white
-        $0.font = .systemFont(ofSize: 11)
-        $0.clipsToBounds = true
-        $0.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-        $0.layer.cornerRadius = descriptionLabelHeight / 2
-        $0.leftPadding = 20.0
-        $0.rightPadding = 10.0
+        $0.numberOfLines = 2
     }
     
     private lazy var snsStackView = UIStackView().then {
@@ -86,8 +90,7 @@ class DetailViewController: UIViewController {
         $0.spacing = 10.0
     }
     
-    private lazy var directionButton = UIButton().then {
-        $0.setTitle("Get Directions", for: .normal)
+    private lazy var bottomButton = UIButton().then {
         $0.setTitleColor(.white, for: .normal)
         $0.titleLabel?.font = .systemFont(ofSize: 13, weight: .semibold)
         $0.backgroundColor = Asset.Colors.primaryGreen.color
@@ -163,6 +166,7 @@ class DetailViewController: UIViewController {
         }
         
         snsStackView.isHidden = false
+        bottomButton.isHidden = true
     }
     
     private func configureLunchBox(model: LunchBoxModel) {
@@ -177,6 +181,8 @@ class DetailViewController: UIViewController {
         }
 
         snsStackView.isHidden = true
+        bottomButton.isHidden = false
+        bottomButton.setTitle("Order", for: .normal)
     }
     
     private func configureStore(model: StoreModel) {
@@ -191,6 +197,8 @@ class DetailViewController: UIViewController {
         }
         
         snsStackView.isHidden = true
+        bottomButton.isHidden = false
+        bottomButton.setTitle("Direction", for: .normal)
     }
 }
 
@@ -200,12 +208,17 @@ extension DetailViewController {
         view.backgroundColor = .white
         navigationItem.title = "Details"
         
-        view.addSubview(scrollView)
+        view.addSubview(mainStackview)
+        
+        mainStackview.addArrangedSubview(scrollView)
+        mainStackview.addArrangedSubview(bottomButton)
+        
         scrollView.addSubview(containerStackView)
         
         containerStackView.addArrangedSubview(mainImageContainerView)
         mainImageContainerView.addSubview(mainImageView)
-        mainImageContainerView.addSubview(descriptionLabel)
+        mainImageContainerView.addSubview(descriptionView)
+        descriptionView.addSubview(descriptionLabel)
         
         containerStackView.addArrangedSubview(snsStackView)
         snsStackView.addArrangedSubview(UIView())
@@ -217,12 +230,11 @@ extension DetailViewController {
         snsStackView.addArrangedSubview(UIView())
         
         containerStackView.addArrangedSubview(contentStackView)
-        view.addSubview(directionButton)
     }
     
     private func setLayouts() {
-        scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(view.safeAreaLayoutGuide)
+        mainStackview.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
         containerStackView.snp.makeConstraints { make in
@@ -236,20 +248,21 @@ extension DetailViewController {
             make.height.equalTo(200)
         }
         
-        descriptionLabel.snp.makeConstraints { make in
+        descriptionView.snp.makeConstraints { make in
+            make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(descriptionLabelHeight)
-            make.leading.equalToSuperview()
-            make.bottom.equalTo(mainImageView.snp.bottom).inset(30)
-            make.trailing.equalToSuperview().inset(30)
+        }
+        
+        descriptionLabel.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.leading.trailing.equalTo(10)
         }
         
         snsStackView.snp.makeConstraints { make in
             make.height.equalTo(35)
         }
         
-        directionButton.snp.makeConstraints { make in
-            make.top.equalTo(scrollView.snp.bottom).offset(10)
-            make.leading.trailing.bottom.equalTo(view.safeAreaLayoutGuide)
+        bottomButton.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
     }

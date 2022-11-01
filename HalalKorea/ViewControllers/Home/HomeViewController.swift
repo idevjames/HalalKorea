@@ -173,7 +173,8 @@ class HomeViewController: UIViewController {
     }
     
     private func moveToMiceTour() {
-        
+        let miceTourViewController = MiceTourViewController()
+        self.navigationController?.pushViewController(miceTourViewController, animated: true)
     }
     
     private func moveToMetaverse(_ urlString: String) {

@@ -25,6 +25,7 @@ target 'HalalKorea' do
   
   # UI
   pod 'ReadMoreTextView'
+  pod 'ViewPager-Swift'
 
   target 'HalalKoreaTests' do
     inherit! :search_paths
