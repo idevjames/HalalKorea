@@ -136,7 +136,7 @@ class DetailViewController: UIViewController {
                 self?.configureAccommodation(model: $0)
             })
             .disposed(by: disposeBag)
-        
+
         output.lunchBoxModel
             .filter { $0.objectId != nil }
             .asDriverComplete()
@@ -144,12 +144,20 @@ class DetailViewController: UIViewController {
                 self?.configureLunchBox(model: $0)
             })
             .disposed(by: disposeBag)
-        
+
         output.storeModel
             .filter { $0.objectId != nil }
             .asDriverComplete()
             .drive(onNext: { [weak self] in
                 self?.configureStore(model: $0)
+            })
+            .disposed(by: disposeBag)
+        
+        output.miceTourModel
+            .filter { $0.objectId != nil }
+            .asDriverComplete()
+            .drive(onNext: { [weak self] in
+                self?.configureMiceTour(model: $0)
             })
             .disposed(by: disposeBag)
     }
@@ -199,6 +207,21 @@ class DetailViewController: UIViewController {
         snsStackView.isHidden = true
         bottomButton.isHidden = false
         bottomButton.setTitle("Direction", for: .normal)
+    }
+    
+    private func configureMiceTour(model: MiceTourModel) {
+        if let imageURL = model.mainImage {
+            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
+        }
+        
+        descriptionLabel.text = model.name
+        
+        model.contents.forEach {
+            contentStackView.addArrangedSubview(DetailContentView(content: $0))
+        }
+        
+        snsStackView.isHidden = true
+        bottomButton.isHidden = true
     }
 }
 

@@ -24,7 +24,6 @@ target 'HalalKorea' do
   pod 'Then'
   
   # UI
-  pod 'ReadMoreTextView'
   pod 'ViewPager-Swift'
 
   target 'HalalKoreaTests' do

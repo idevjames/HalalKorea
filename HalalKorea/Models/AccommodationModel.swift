@@ -40,6 +40,10 @@ class AccommodationModel: PFObject, PFSubclassing {
         get { self.object(forKey: "col_modifiedtime") as? String ?? "" }
     }
     
+    var parking: String {
+        get { self.object(forKey: "col_parkinglodging") as? String ?? ""}
+    }
+    
     var imageURL1: String {
         get { self.object(forKey: "col_originimgurl1") as? String ?? "" }
     }
@@ -169,7 +173,7 @@ class AccommodationModel: PFObject, PFSubclassing {
         
         contents.append(
             DetailContent(
-                image: Asset.Images.imgNo.image,
+                image: Asset.Images.icDet6.image,
                 title: "Address",
                 content: addr1
             )
@@ -177,7 +181,7 @@ class AccommodationModel: PFObject, PFSubclassing {
         
         contents.append(
             DetailContent(
-                image: Asset.Images.imgNo.image,
+                image: Asset.Images.icDet8.image,
                 title: "Contact",
                 content: tel
             )
@@ -188,6 +192,22 @@ class AccommodationModel: PFObject, PFSubclassing {
                 image: Asset.Images.icCooking.image,
                 title: "Cooking",
                 content: chkCooking
+            )
+        )
+        
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icDet9.image,
+                title: "Parking",
+                content: parking
+            )
+        )
+        
+        contents.append(
+            DetailContent(
+                image: Asset.Images.icDet7.image,
+                title: "Homepage",
+                content: homepage
             )
         )
         

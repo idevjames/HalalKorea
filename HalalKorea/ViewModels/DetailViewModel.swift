@@ -9,6 +9,7 @@ import Foundation
 
 import RxSwift
 import RxCocoa
+import Parse
 
 class DetailViewModel {
     struct Input {
@@ -19,6 +20,7 @@ class DetailViewModel {
         let accommodationModel = BehaviorRelay<AccommodationModel>(value: .init())
         let lunchBoxModel = BehaviorRelay<LunchBoxModel>(value: .init())
         let storeModel = BehaviorRelay<StoreModel>(value: .init())
+        let miceTourModel = BehaviorRelay<MiceTourModel>(value: .init())
     }
     
     // MARK: - Variables
@@ -37,6 +39,8 @@ class DetailViewModel {
                     output.lunchBoxModel.accept(model)
                 } else if let model = model as? StoreModel {
                     output.storeModel.accept(model)
+                } else if let model = model as? MiceTourModel {
+                    output.miceTourModel.accept(model)
                 }
             } onError: { error in
                 print(error.localizedDescription)

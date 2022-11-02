@@ -9,7 +9,6 @@ import UIKit
 
 import SnapKit
 import Then
-import ReadMoreTextView
 
 class DetailContentView: UIView {
     // MARK: - UI Components
@@ -36,10 +35,26 @@ class DetailContentView: UIView {
         $0.font = .systemFont(ofSize: 13)
     }
     
-    private lazy var contentView = ReadMoreTextView().then {
+    private lazy var contentView = UIView().then {
+        $0.backgroundColor = .white
+    }
+    
+    private lazy var contentTextView = UITextView().then {
         $0.text = content.content.withoutHtml()
-        $0.maximumNumberOfLines = 4
-        $0.shouldTrim = false
+        $0.textContainer.maximumNumberOfLines = 4
+        $0.textContainer.lineBreakMode = .byTruncatingTail
+        $0.isScrollEnabled = false
+        $0.dataDetectorTypes = .link
+        $0.isEditable = false
+        $0.isSelectable = true
+    }
+    
+    private lazy var viewMoreLessButton = UIButton().then {
+        $0.backgroundColor = .white
+        $0.setTitleColor(.blue, for: .normal)
+        $0.titleLabel?.font = .systemFont(ofSize: 13)
+        $0.addTarget(self, action: #selector(onClickViewMoreLessButton(_:)), for: .touchUpInside)
+        $0.isHidden = true
     }
     
     // MARK: - Variables
@@ -52,10 +67,29 @@ class DetailContentView: UIView {
         
         setupUI()
         setLayouts()
+        
+        contentTextView.delegate = self
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        // 더보기 버튼 구현
+        guard let fontHeight = contentTextView.font?.lineHeight else { return }
+        
+        let textInset = contentTextView.textContainerInset
+        let lineCount = (contentTextView.contentSize.height - textInset.top - textInset.bottom) / fontHeight
+        
+        if lineCount <= 4 {
+            viewMoreLessButton.isHidden = true
+        } else {
+            viewMoreLessButton.isHidden = false
+            viewMoreLessButton.setTitle("..read all", for: .normal)
+        }
     }
     
     // MARK: - Private Methods
@@ -65,6 +99,8 @@ class DetailContentView: UIView {
         hStackView.addArrangedSubview(vStackView)
         vStackView.addArrangedSubview(titleLabel)
         vStackView.addArrangedSubview(contentView)
+        contentView.addSubview(contentTextView)
+        contentView.addSubview(viewMoreLessButton)
         
         // 이미지 사이즈 조절
         imageView.image = imageView.image?.aspectFitImage(inRect: .init(x: 0, y: 0, width: 30, height: 30))
@@ -79,17 +115,41 @@ class DetailContentView: UIView {
         imageView.snp.makeConstraints { make in
             make.width.equalTo(30)
         }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.height.equalTo(20)
+        }
+        
+        contentTextView.snp.makeConstraints { make in
+            make.top.leading.bottom.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-15)
+        }
+        
+        viewMoreLessButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(9)
+            make.height.equalTo(13)
+        }
     }
     
-    private func changeExpandableContentView() {
+    @objc private func onClickViewMoreLessButton(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
         
-        let attrs: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 13),
-            .foregroundColor: UIColor.blue
-        ]
-        
-        contentView.attributedReadMoreText = .init(string: "... read all", attributes: attrs)
-        contentView.attributedReadLessText = .init(string: "less", attributes: attrs)
-        contentView.shouldTrim = false
+        if sender.isSelected {
+            contentTextView.textContainer.maximumNumberOfLines = 0
+            contentTextView.invalidateIntrinsicContentSize()
+            viewMoreLessButton.setTitle(" less", for: .normal)
+        } else {
+            contentTextView.textContainer.maximumNumberOfLines = 4
+            contentTextView.invalidateIntrinsicContentSize()
+            viewMoreLessButton.setTitle("..read all", for: .normal)
+        }
+    }
+}
+
+extension DetailContentView: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+
+        return UIApplication.shared.canOpenURL(URL)
     }
 }
