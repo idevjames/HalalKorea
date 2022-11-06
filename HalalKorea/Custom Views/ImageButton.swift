@@ -34,19 +34,9 @@ class ImageButton: UIView {
         $0.layer.shadowOffset = CGSize(width: -1.0, height: 5.0)
         $0.layer.shadowOpacity = 0.1
     }
-    
-    private lazy var stackView = UIStackView().then {
-        $0.axis = .vertical
-        $0.alignment = .fill
-        $0.distribution = .fillEqually
-    }
-    
+        
     private lazy var imageView = UIImageView().then {
-        $0.contentMode = .bottom
-    }
-    
-    private lazy var titleImageView = UIImageView().then {
-        $0.contentMode = .top
+        $0.contentMode = .scaleAspectFit
     }
     
     init(frame: CGRect, type: ImageButtonType) {
@@ -70,35 +60,26 @@ class ImageButton: UIView {
     
     private func setupUI() {
         addSubview(backgroundView)
-        backgroundView.addSubview(stackView)
-        
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(titleImageView)
-        
+        backgroundView.addSubview(imageView)
+                
         switch type! {
         case .prayerTime:
-            imageView.image = Asset.Images.prayerImg.image
-            titleImageView.image = Asset.Images.prayerTime.image
+            imageView.image = Asset.Images.btnPrayerTime.image
             
         case .lunchBox:
-            imageView.image = Asset.Images.lunchImg.image
-            titleImageView.image = Asset.Images.lunchBox.image
+            imageView.image = Asset.Images.btnLunchBox.image
             
         case .miceTour:
-            imageView.image = Asset.Images.miceImg.image
-            titleImageView.image = Asset.Images.miceTour.image
+            imageView.image = Asset.Images.btnMiceTour.image
             
         case .metaverse:
-            imageView.image = Asset.Images.metaImg.image
-            titleImageView.image = Asset.Images.metaverse.image
+            imageView.image = Asset.Images.btnMetaverse.image
             
         case .store:
-            imageView.image = Asset.Images.storeImg.image
-            titleImageView.image = Asset.Images.store.image
+            imageView.image = Asset.Images.btnStore.image
             
         case .accommodation:
-            imageView.image = Asset.Images.accomImg.image
-            titleImageView.image = Asset.Images.accommodation.image
+            imageView.image = Asset.Images.btnAccommodation.image
         }
     }
     
@@ -107,9 +88,8 @@ class ImageButton: UIView {
             make.top.leading.trailing.bottom.equalToSuperview()
         }
         
-        stackView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
-            make.leading.trailing.bottom.equalToSuperview()
+        imageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
 }

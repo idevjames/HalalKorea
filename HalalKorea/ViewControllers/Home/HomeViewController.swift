@@ -22,18 +22,28 @@ class HomeViewController: UIViewController {
     // MARK: - Variables
     private let viewModel: HomeViewModel
     private let disposeBag = DisposeBag()
-    private let stackViewSpacing: CGFloat = 20.0
-    private let stackViewOffset: CGFloat = 40.0
+    private let stackViewSpacing: CGFloat = 10.0
+    private let stackViewOffset: CGFloat = 10.0
     
     // MARK: - UI Components
-    private lazy var navigationView = CustomNavigationTitleView()
+    private let rightBarButton = UIButton().then {
+        $0.setImage(
+            Asset.Images.commonChatbot.image.aspectFitImage(
+                inRect: CGRect(x: 0.0,
+                               y: 0.0,
+                               width: 30.0,
+                               height: 30.0)),
+            for: .normal
+        )
+    }
+    
     private lazy var compassImageView = UIImageView().then {
         $0.image = Asset.Images.compassImg.image
         $0.contentMode = .scaleAspectFit
     }
     
     private lazy var welcomeImageView = UIImageView().then {
-        $0.image = Asset.Images.welcomeToHalalKorea.image
+        $0.image = Asset.Images.icWelcome.image
         $0.contentMode = .scaleAspectFit
     }
     
@@ -58,12 +68,35 @@ class HomeViewController: UIViewController {
         $0.spacing = stackViewSpacing
     }
     
-    private lazy var prayerTimeButton = ImageButton(frame: .zero, type: .prayerTime)
-    private lazy var lunchBoxButton = ImageButton(frame: .zero, type: .lunchBox)
-    private lazy var miceTourButton = ImageButton(frame: .zero, type: .miceTour)
-    private lazy var metaverseButton = ImageButton(frame: .zero, type: .metaverse)
-    private lazy var storeButton = ImageButton(frame: .zero, type: .store)
-    private lazy var accommodationButton = ImageButton(frame: .zero, type: .accommodation)
+    private lazy var prayerTimeButton = UIImageView().then {
+        $0.image = Asset.Images.btnPrayerTime.image
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var lunchBoxButton = UIImageView().then {
+        $0.image = Asset.Images.btnLunchBox.image
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var miceTourButton = UIImageView().then {
+        $0.image = Asset.Images.btnMiceTour.image
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var metaverseButton = UIImageView().then {
+        $0.image = Asset.Images.btnMetaverse.image
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var storeButton = UIImageView().then {
+        $0.image = Asset.Images.btnStore.image
+        $0.contentMode = .scaleAspectFit
+    }
+    
+    private lazy var accommodationButton = UIImageView().then {
+        $0.image = Asset.Images.btnAccommodation.image
+        $0.contentMode = .scaleAspectFit
+    }
     
     // MARK: - Initialize
     init(viewModel: HomeViewModel) {
@@ -102,18 +135,10 @@ class HomeViewController: UIViewController {
         .drive(onNext: { [weak self] in self?.moveToChild(tag: $0) })
         .disposed(by: disposeBag)
         
-        // Image Resizing
-        self.rx.viewDidAppear
-            .filter { $0 }
-            .asDriverComplete()
-            .drive(onNext: { [weak self] _ in
-                self?.prayerTimeButton.imageResizing()
-                self?.lunchBoxButton.imageResizing()
-                self?.miceTourButton.imageResizing()
-                self?.metaverseButton.imageResizing()
-                self?.storeButton.imageResizing()
-                self?.accommodationButton.imageResizing()
-            })
+        rightBarButton.rx.tap
+            .bind {
+                print("tap home")
+            }
             .disposed(by: disposeBag)
     }
         
@@ -206,8 +231,10 @@ extension HomeViewController {
         storeButton.tag = 555
         accommodationButton.tag = 666
         
-        navigationItem.titleView = navigationView
-        
+        navigationItem.titleView = setNavigationTitleView()
+
+        navigationItem.backButtonTitle = ""
+        navigationItem.rightBarButtonItem = .init(customView: rightBarButton)
         view.addSubview(compassImageView)
         view.addSubview(welcomeImageView)
         view.addSubview(stackView)
@@ -226,10 +253,6 @@ extension HomeViewController {
     }
     
     private func setLayouts() {
-        navigationView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
-        
         compassImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview().inset(20)

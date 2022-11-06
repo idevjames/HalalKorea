@@ -21,7 +21,17 @@ class LunchBoxViewController: UIViewController {
     private var loadMore = PublishSubject<Bool>()
     
     // MARK: - UI Components
-    private lazy var navigationView = CustomNavigationTitleView()
+    private let rightBarButton = UIButton().then {
+        $0.setImage(
+            Asset.Images.commonChatbot.image.aspectFitImage(
+                inRect: CGRect(x: 0.0,
+                               y: 0.0,
+                               width: 30.0,
+                               height: 30.0)),
+            for: .normal
+        )
+    }
+    
     private lazy var listTableView = UITableView().then {
         $0.register(ListCell.self, forCellReuseIdentifier: ListCell.identifier)
         $0.estimatedRowHeight = 230
@@ -56,6 +66,12 @@ class LunchBoxViewController: UIViewController {
             .map { _ in self.requestLoadMore() }
             .distinctUntilChanged()
             .drive(loadMore)
+            .disposed(by: disposeBag)
+                
+        rightBarButton.rx.tap
+            .bind {
+                print("tap lunchbox")
+            }
             .disposed(by: disposeBag)
     }
     
@@ -101,16 +117,16 @@ class LunchBoxViewController: UIViewController {
 extension LunchBoxViewController {
     private func setupUI() {
         view.backgroundColor = .white
-        navigationItem.titleView = navigationView
         
+        navigationItem.titleView = setNavigationTitleView()
+        navigationItem.rightBarButtonItem = .init(customView: rightBarButton)
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = Asset.Colors.primaryGreen.color
+
         view.addSubview(listTableView)
     }
     
     private func setLayouts() {
-        navigationView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
-        
         listTableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

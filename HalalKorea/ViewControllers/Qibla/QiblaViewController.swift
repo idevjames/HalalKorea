@@ -19,7 +19,16 @@ class QiblaViewController: UIViewController {
     private let disposeBag = DisposeBag()
     
     // MARK: - UI Components
-    private lazy var navigationView = CustomNavigationTitleView()
+    private let rightBarButton = UIButton().then {
+        $0.setImage(
+            Asset.Images.commonChatbot.image.aspectFitImage(
+                inRect: CGRect(x: 0.0,
+                               y: 0.0,
+                               width: 30.0,
+                               height: 30.0)),
+            for: .normal
+        )
+    }
     
     // MARK: - Initialize
     init(viewModel: QiblaViewModel) {
@@ -66,6 +75,12 @@ class QiblaViewController: UIViewController {
         print("========== global league params")
         print(getQiblaTime(.muslimWorldLeague))
         print()
+        
+        rightBarButton.rx.tap
+            .bind {
+                print("Tap Qibla")
+            }
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModel() {
@@ -99,12 +114,13 @@ class QiblaViewController: UIViewController {
 extension QiblaViewController {
     private func setupUI() {
         view.backgroundColor = .white
-        navigationItem.titleView = navigationView
+
+        navigationItem.titleView = setNavigationTitleView()
+        navigationItem.rightBarButtonItem = .init(customView: rightBarButton)
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = Asset.Colors.primaryGreen.color
     }
     
     private func setLayouts() {
-        navigationView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalToSuperview()
-        }
     }
 }
