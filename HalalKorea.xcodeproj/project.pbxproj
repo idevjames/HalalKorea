@@ -38,6 +38,8 @@
 		1A6CFF34287FF3A500AC8F39 /* HalalKoreaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CFF33287FF3A500AC8F39 /* HalalKoreaUITestsLaunchTests.swift */; };
 		1A6CFF52288006AC00AC8F39 /* ParseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CFF51288006AC00AC8F39 /* ParseService.swift */; };
 		1A6CFF5528800B3E00AC8F39 /* ParseConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A6CFF5428800B3E00AC8F39 /* ParseConst.swift */; };
+		1A76616E291A9EC000E641E1 /* LunchBoxCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A76616D291A9EC000E641E1 /* LunchBoxCell.swift */; };
+		1A766170291AB0A900E641E1 /* LunchBoxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A76616F291AB0A900E641E1 /* LunchBoxDetailViewController.swift */; };
 		1A87449E2900394F00AF25CE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A87449D2900394F00AF25CE /* LocationManager.swift */; };
 		1AE2D4CB28E2E876002A7F32 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1AE2D4CA28E2E876002A7F32 /* Launch Screen.storyboard */; };
 		1AE2D4E528E312D9002A7F32 /* QiblaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AE2D4E428E312D9002A7F32 /* QiblaViewModel.swift */; };
@@ -114,6 +116,8 @@
 		1A6CFF33287FF3A500AC8F39 /* HalalKoreaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalalKoreaUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1A6CFF51288006AC00AC8F39 /* ParseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseService.swift; sourceTree = "<group>"; };
 		1A6CFF5428800B3E00AC8F39 /* ParseConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseConst.swift; sourceTree = "<group>"; };
+		1A76616D291A9EC000E641E1 /* LunchBoxCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchBoxCell.swift; sourceTree = "<group>"; };
+		1A76616F291AB0A900E641E1 /* LunchBoxDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchBoxDetailViewController.swift; sourceTree = "<group>"; };
 		1A87449D2900394F00AF25CE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		1AE2D4CA28E2E876002A7F32 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		1AE2D4E428E312D9002A7F32 /* QiblaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiblaViewModel.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				1AFBD5AC289D215600708661 /* LunchBoxViewController.swift */,
+				1A76616F291AB0A900E641E1 /* LunchBoxDetailViewController.swift */,
 			);
 			path = LunchBox;
 			sourceTree = "<group>";
@@ -409,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				B1E5449028EFDC5400846DD7 /* ListCell.swift */,
+				1A76616D291A9EC000E641E1 /* LunchBoxCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -695,6 +701,7 @@
 				1A87449E2900394F00AF25CE /* LocationManager.swift in Sources */,
 				1A5DC7212882AEA8009CDEFD /* PFObject+Extension.swift in Sources */,
 				B1F42C0C2908B9BF007EA273 /* StoreViewController.swift in Sources */,
+				1A766170291AB0A900E641E1 /* LunchBoxDetailViewController.swift in Sources */,
 				1A5DE39C28EACCE50071A354 /* XCAssets+Generated.swift in Sources */,
 				B1E5448C28EFDB7600846DD7 /* AccommodationViewController.swift in Sources */,
 				1AFBD5B8289D2F4100708661 /* UIColor+Extention.swift in Sources */,
@@ -712,6 +719,7 @@
 				1A5DC7242882E800009CDEFD /* CompanyIntroduceModel.swift in Sources */,
 				1A4D75B328F5A93B00C8C04C /* DetailContentView.swift in Sources */,
 				1AE2D4E528E312D9002A7F32 /* QiblaViewModel.swift in Sources */,
+				1A76616E291A9EC000E641E1 /* LunchBoxCell.swift in Sources */,
 				B177527B28FD2139007B3FE5 /* LunchBoxModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

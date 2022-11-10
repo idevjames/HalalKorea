@@ -13,13 +13,11 @@ import RxCocoa
 class LunchBoxViewModel {
     struct Input {
         let didLoad: Observable<Void>
-        let itemSelected: ControlEvent<IndexPath>
         let loadMore: Observable<Bool>
     }
     
     struct Output {
         var models = BehaviorRelay<[LunchBoxModel]>(value: [])
-        var selected = PublishSubject<LunchBoxModel>()
     }
     
     // MARK: - Variables
@@ -29,6 +27,7 @@ class LunchBoxViewModel {
     private var startIndex: Int = 0
     private let fetchingCount: Int = 10
     private var isLoading: Bool = false
+    private var isNoMoreLoad: Bool = false
     
     // MARK: - Methods
     func transform(_ input: Input) -> Output {
@@ -38,26 +37,24 @@ class LunchBoxViewModel {
             .bind(to: self.models)
             .disposed(by: disposeBag)
         
-        input.itemSelected
-            .compactMap { self.models.value[$0.row] }
-            .bind(to: self.selectedModel)
-            .disposed(by: disposeBag)
-        
         input.loadMore
-            .filter { $0 && !self.isLoading }
+            .filter { $0 && !self.isLoading && !self.isNoMoreLoad }
             .flatMap { [weak self] _ in self!.fetch() }
             .subscribe(onNext: { [weak self] newModels in
                 guard let self = self else { return }
                 
                 self.models.accept(self.models.value + newModels)
-                self.startIndex = newModels.count
+                self.startIndex += newModels.count
+                
+                if newModels.count == 0 {
+                    self.isNoMoreLoad = true
+                }
             }, onError: { error in
                 print(error.localizedDescription)
             })
             .disposed(by: disposeBag)
         
-        return Output(models: self.models,
-                      selected: self.selectedModel)
+        return Output(models: self.models)
     }
     
     // MARK: - Private Methods

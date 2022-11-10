@@ -29,6 +29,7 @@ class AccommodationViewModel {
     private var startIndex: Int = 0
     private let fetchingCount: Int = 10
     private var isLoading: Bool = false
+    private var isNoMoreLoad: Bool = false
     
     // MARK: - Methods
     func transform(_ input: Input) -> Output {
@@ -50,13 +51,17 @@ class AccommodationViewModel {
             .disposed(by: disposeBag)
         
         input.loadMore
-            .filter { $0 && !self.isLoading }
+            .filter { $0 && !self.isLoading && !self.isNoMoreLoad }
             .flatMap { [weak self] _ in self!.fetch() }
             .subscribe(onNext: { [weak self] newModels in
                 guard let self = self else { return }
                 
                 self.models.accept(self.models.value + newModels)
-                self.startIndex = newModels.count
+                self.startIndex += newModels.count
+                
+                if newModels.count == 0 {
+                    self.isNoMoreLoad = true
+                }
             }, onError: { error in
                 print(error.localizedDescription)
             })

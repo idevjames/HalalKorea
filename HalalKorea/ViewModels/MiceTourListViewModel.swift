@@ -29,6 +29,7 @@ class MiceTourListViewModel {
     private var startIndex: Int = 0
     private let fetchingCount: Int = 10
     private var isLoading: Bool = false
+    private var isNoMore: Bool = false
     
     init(category: String) {
         self.category = category
@@ -48,13 +49,17 @@ class MiceTourListViewModel {
             .disposed(by: disposeBag)
         
         input.loadMore
-            .filter { $0 && !self.isLoading }
+            .filter { $0 && !self.isLoading && !self.isNoMore }
             .flatMap { [weak self] _ in self!.fetch() }
             .subscribe(onNext: { [weak self] newModels in
                 guard let self = self else { return }
                 
                 self.models.accept(self.models.value + newModels)
-                self.startIndex = newModels.count
+                self.startIndex += newModels.count
+                
+                if newModels.count == 0 {
+                    self.isNoMore = true
+                }
             }, onError: { error in
                 print(error.localizedDescription)
             })

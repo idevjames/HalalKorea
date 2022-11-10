@@ -105,7 +105,7 @@ class ListCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setupUI()
-        setLayotus()
+        setLayouts()
     }
     
     required init?(coder: NSCoder) {
@@ -124,8 +124,6 @@ class ListCell: UITableViewCell {
     public func configure(model: AnyObject?) {
         if let model = model as? AccommodationModel {
             makeAccommodation(model)
-        } else if let model = model as? LunchBoxModel {
-            makeLunchBox(model)
         } else if let model = model as? StoreModel {
             makeStore(model)
         } else if let model = model as? MiceTourModel {
@@ -144,15 +142,6 @@ class ListCell: UITableViewCell {
         certLabel.isHidden = model.invisible
         locationImageView.isHidden = true
         locationLabel.isHidden = true
-    }
-    
-    private func makeLunchBox(_ model: LunchBoxModel) {
-        if let imageURL = model.mainImage {
-            mainImageView.kf.setImage(with: imageURL, placeholder: Asset.Images.imgNo.image)
-        }
-        
-        descriptionLabel.text = model.lunchName
-        iconStackView.isHidden = true
     }
     
     private func makeStore(_ model: StoreModel) {
@@ -184,7 +173,7 @@ extension ListCell {
     private func setupUI() {
         self.selectionStyle = .none
         
-        addSubview(containerStackView)
+        contentView.addSubview(containerStackView)
         
         containerStackView.addArrangedSubview(mainContentView)
         
@@ -211,7 +200,7 @@ extension ListCell {
         layer.masksToBounds = false
     }
     
-    private func setLayotus() {
+    private func setLayouts() {
         containerStackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }

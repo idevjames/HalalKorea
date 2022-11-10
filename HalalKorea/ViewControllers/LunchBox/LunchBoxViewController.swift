@@ -33,7 +33,7 @@ class LunchBoxViewController: UIViewController {
     }
     
     private lazy var listTableView = UITableView().then {
-        $0.register(ListCell.self, forCellReuseIdentifier: ListCell.identifier)
+        $0.register(LunchBoxCell.self, forCellReuseIdentifier: LunchBoxCell.identifier)
         $0.estimatedRowHeight = 230
         $0.rowHeight = UITableView.automaticDimension
         $0.separatorStyle = .none
@@ -79,27 +79,23 @@ class LunchBoxViewController: UIViewController {
         let output = viewModel.transform(
             LunchBoxViewModel.Input(
                 didLoad: self.rx.viewDidAppear.take(1).mapToVoid(),
-                itemSelected: listTableView.rx.itemSelected,
                 loadMore: self.loadMore
             )
         )
         
         // 배열로 전달받은 모델 (객체)를 테이블뷰와 바인딩
         output.models
-            .bind(to: listTableView.rx.items(cellIdentifier: ListCell.identifier, cellType: ListCell.self)) { (row, model, cell) in
+            .bind(to: listTableView.rx.items(cellIdentifier: LunchBoxCell.identifier, cellType: LunchBoxCell.self)) { (row, model, cell) in
                 cell.configure(model: model)
+                
+                // Order button click event
+                cell.orderButtonAction = { [weak self] model in
+                    let lunchBoxDetailViewController = LunchBoxDetailViewController(model: model
+                    )
+                    
+                    self?.navigationController?.pushViewController(lunchBoxDetailViewController, animated: true)
+                }
             }
-            .disposed(by: disposeBag)
-        
-        // 테이블뷰에서 선택된 모델 (객체)의 정보 전달
-        output.selected
-            .map {
-                DetailViewController(viewModel: .init(), model: $0)
-            }
-            .asDriverComplete()
-            .drive(onNext: { [weak self] in
-                self?.navigationController?.pushViewController($0, animated: true)
-            })
             .disposed(by: disposeBag)
     }
     
@@ -128,7 +124,8 @@ extension LunchBoxViewController {
     
     private func setLayouts() {
         listTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.bottom.equalToSuperview()
         }
     }
 }
